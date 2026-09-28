@@ -248,4 +248,9 @@ async function care(action: typeof actions[number]) {
 /* 多宠物切换与领养选项保持大热区，长名字换行；锁定原因独立占行避免挤压按钮。 */
 .pet-switcher,.new-pet-options{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}.pet-switcher .pet-switch,.new-pet-options button{min-height:48px;padding:9px 16px;border-radius:14px;background:#f0eaff;color:var(--purple-deep);font-size:16px;overflow-wrap:anywhere}.pet-switcher .current,.new-pet-options .current{background:var(--purple);color:#fff}.adoption-rule{margin-top:12px;overflow-wrap:anywhere}.new-pet-options{justify-content:center}
 @media(max-width:600px){.pet-switcher .pet-switch,.new-pet-options button{flex:1 1 115px;font-size:15px}}
+/* 手机横屏使用紧凑头部和图像高度，保留单列结构以避免状态条及中文标签被压断。 */
+@media(max-width:844px) and (orientation:landscape){.pet-main{padding:10px 12px 20px}.pet-header{padding:0 0 14px}.mock{margin-bottom:4px}.title{font-size:29px}.title-icon{width:44px;height:44px}.subtitle{font-size:16px;margin-top:4px}.choice-art,.detail-art,.center-art{height:190px}.center-companion,.center-status{padding:16px}.care-grid{grid-template-columns:1fr 1fr}.care-card .care{min-height:72px}}
+/* 软键盘或地址栏改变高度时以动态视口约束弹窗，并为圆角屏安全区留白。 */
+.dialog{max-height:calc(100dvh - 48px)}
+@supports (padding: env(safe-area-inset-right)){.pet-main{padding-right:max(12px,env(safe-area-inset-right))}.backdrop{padding-bottom:max(16px,env(safe-area-inset-bottom))}}
 </style>

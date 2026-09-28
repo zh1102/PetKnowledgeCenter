@@ -1,0 +1,326 @@
+[
+  {
+    "clientHeight": 640,
+    "clientWidth": 360,
+    "overflowElements": [
+      {
+        "cls": "",
+        "right": 400,
+        "tag": "DIV"
+      },
+      {
+        "cls": "",
+        "right": 400,
+        "tag": "DIV"
+      },
+      {
+        "cls": "",
+        "right": 400,
+        "tag": "DIV"
+      },
+      {
+        "cls": "",
+        "right": 400,
+        "tag": "DIV"
+      }
+    ],
+    "scrollHeight": 1746,
+    "scrollWidth": 360,
+    "sidebarWidth": 64,
+    "undersized": [],
+    "page": "adoption",
+    "width": 360,
+    "height": 640
+  },
+  {
+    "clientHeight": 360,
+    "clientWidth": 640,
+    "overflowElements": [],
+    "scrollHeight": 1035,
+    "scrollWidth": 640,
+    "sidebarWidth": 64,
+    "undersized": [],
+    "page": "adoption",
+    "width": 640,
+    "height": 360
+  },
+  {
+    "clientHeight": 844,
+    "clientWidth": 390,
+    "overflowElements": [
+      {
+        "cls": "",
+        "right": 400,
+        "tag": "DIV"
+      },
+      {
+        "cls": "",
+        "right": 400,
+        "tag": "DIV"
+      },
+      {
+        "cls": "",
+        "right": 400,
+        "tag": "DIV"
+      },
+      {
+        "cls": "",
+        "right": 400,
+        "tag": "DIV"
+      }
+    ],
+    "scrollHeight": 1746,
+    "scrollWidth": 390,
+    "sidebarWidth": 64,
+    "undersized": [],
+    "page": "adoption",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "clientHeight": 390,
+    "clientWidth": 844,
+    "overflowElements": [],
+    "scrollHeight": 961,
+    "scrollWidth": 844,
+    "sidebarWidth": 64,
+    "undersized": [],
+    "page": "adoption",
+    "width": 844,
+    "height": 390
+  },
+  {
+    "clientHeight": 1024,
+    "clientWidth": 768,
+    "overflowElements": [],
+    "scrollHeight": 1107,
+    "scrollWidth": 768,
+    "sidebarWidth": 176,
+    "undersized": [],
+    "page": "adoption",
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "clientHeight": 768,
+    "clientWidth": 1024,
+    "overflowElements": [],
+    "scrollHeight": 872,
+    "scrollWidth": 1024,
+    "sidebarWidth": 176,
+    "undersized": [],
+    "page": "adoption",
+    "width": 1024,
+    "height": 768
+  },
+  {
+    "clientHeight": 1180,
+    "clientWidth": 820,
+    "overflowElements": [],
+    "scrollHeight": 1180,
+    "scrollWidth": 820,
+    "sidebarWidth": 176,
+    "undersized": [],
+    "page": "adoption",
+    "width": 820,
+    "height": 1180
+  },
+  {
+    "clientHeight": 820,
+    "clientWidth": 1180,
+    "overflowElements": [],
+    "scrollHeight": 872,
+    "scrollWidth": 1180,
+    "sidebarWidth": 176,
+    "undersized": [],
+    "page": "adoption",
+    "width": 1180,
+    "height": 820
+  },
+  {
+    "clientHeight": 1366,
+    "clientWidth": 1024,
+    "overflowElements": [],
+    "scrollHeight": 1366,
+    "scrollWidth": 1024,
+    "sidebarWidth": 176,
+    "undersized": [],
+    "page": "adoption",
+    "width": 1024,
+    "height": 1366
+  },
+  {
+    "clientHeight": 1024,
+    "clientWidth": 1366,
+    "overflowElements": [],
+    "scrollHeight": 1024,
+    "scrollWidth": 1366,
+    "sidebarWidth": 255,
+    "undersized": [],
+    "page": "adoption",
+    "width": 1366,
+    "height": 1024
+  },
+  {
+    "clientHeight": 640,
+    "clientWidth": 360,
+    "overflowElements": [
+      {
+        "cls": "",
+        "right": 400,
+        "tag": "DIV"
+      },
+      {
+        "cls": "",
+        "right": 400,
+        "tag": "DIV"
+      },
+      {
+        "cls": "",
+        "right": 400,
+        "tag": "DIV"
+      },
+      {
+        "cls": "",
+        "right": 400,
+        "tag": "DIV"
+      }
+    ],
+    "scrollHeight": 1471,
+    "scrollWidth": 360,
+    "sidebarWidth": 64,
+    "undersized": [],
+    "page": "today",
+    "width": 360,
+    "height": 640
+  },
+  {
+    "clientHeight": 360,
+    "clientWidth": 640,
+    "overflowElements": [],
+    "scrollHeight": 1199,
+    "scrollWidth": 640,
+    "sidebarWidth": 64,
+    "undersized": [],
+    "page": "today",
+    "width": 640,
+    "height": 360
+  },
+  {
+    "clientHeight": 844,
+    "clientWidth": 390,
+    "overflowElements": [
+      {
+        "cls": "",
+        "right": 400,
+        "tag": "DIV"
+      },
+      {
+        "cls": "",
+        "right": 400,
+        "tag": "DIV"
+      },
+      {
+        "cls": "",
+        "right": 400,
+        "tag": "DIV"
+      },
+      {
+        "cls": "",
+        "right": 400,
+        "tag": "DIV"
+      }
+    ],
+    "scrollHeight": 1387,
+    "scrollWidth": 390,
+    "sidebarWidth": 64,
+    "undersized": [],
+    "page": "today",
+    "width": 390,
+    "height": 844
+  },
+  {
+    "clientHeight": 390,
+    "clientWidth": 844,
+    "overflowElements": [],
+    "scrollHeight": 1199,
+    "scrollWidth": 844,
+    "sidebarWidth": 64,
+    "undersized": [],
+    "page": "today",
+    "width": 844,
+    "height": 390
+  },
+  {
+    "clientHeight": 1024,
+    "clientWidth": 768,
+    "overflowElements": [],
+    "scrollHeight": 1338,
+    "scrollWidth": 768,
+    "sidebarWidth": 176,
+    "undersized": [],
+    "page": "today",
+    "width": 768,
+    "height": 1024
+  },
+  {
+    "clientHeight": 768,
+    "clientWidth": 1024,
+    "overflowElements": [],
+    "scrollHeight": 872,
+    "scrollWidth": 1024,
+    "sidebarWidth": 176,
+    "undersized": [],
+    "page": "today",
+    "width": 1024,
+    "height": 768
+  },
+  {
+    "clientHeight": 1180,
+    "clientWidth": 820,
+    "overflowElements": [],
+    "scrollHeight": 1338,
+    "scrollWidth": 820,
+    "sidebarWidth": 176,
+    "undersized": [],
+    "page": "today",
+    "width": 820,
+    "height": 1180
+  },
+  {
+    "clientHeight": 820,
+    "clientWidth": 1180,
+    "overflowElements": [],
+    "scrollHeight": 872,
+    "scrollWidth": 1180,
+    "sidebarWidth": 176,
+    "undersized": [],
+    "page": "today",
+    "width": 1180,
+    "height": 820
+  },
+  {
+    "clientHeight": 1366,
+    "clientWidth": 1024,
+    "overflowElements": [],
+    "scrollHeight": 1366,
+    "scrollWidth": 1024,
+    "sidebarWidth": 176,
+    "undersized": [],
+    "page": "today",
+    "width": 1024,
+    "height": 1366
+  },
+  {
+    "clientHeight": 1024,
+    "clientWidth": 1366,
+    "overflowElements": [],
+    "scrollHeight": 1088,
+    "scrollWidth": 1366,
+    "sidebarWidth": 255,
+    "undersized": [],
+    "page": "today",
+    "width": 1366,
+    "height": 1024
+  }
+]
