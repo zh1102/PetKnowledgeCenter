@@ -1,0 +1,17 @@
+
+/.pm-workflow/
+/scripts/pm-runtime-config.js
+/scripts/.venv/
+/.handoff/
+
+# 排除本机依赖、构建结果与验证过程生成的临时目录，避免把可再生成文件提交到仓库。
+/app/node_modules/
+/app/dist/
+/app/.test/
+/app/.verification-build*/
+
+# 排除操作系统和脚本运行产生的缓存文件，保持仓库内容可复现且与设备无关。
+**/__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db

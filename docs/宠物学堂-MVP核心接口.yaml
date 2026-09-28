@@ -1,0 +1,227 @@
+openapi: 3.0.3
+info:
+  title: 宠物学堂 MVP 核心接口
+  version: 1.0.0-draft
+  description: 未确认的奖励和成长数值均由服务端配置返回，客户端不得写死。
+servers:
+  - url: https://api.example.invalid
+    description: 占位地址，不代表已部署环境
+security:
+  - bearerAuth: []
+paths:
+  /v1/children/{childId}/today:
+    get:
+      summary: 获取今日任务、礼包状态与当前宠物摘要
+      parameters:
+        - $ref: '#/components/parameters/ChildId'
+      responses:
+        '200':
+          description: 查询成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodayResponse'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /v1/children/{childId}/pets/adoptions:
+    post:
+      summary: 领养伙伴；首次领养仅允许基础宠物
+      parameters:
+        - $ref: '#/components/parameters/ChildId'
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [petCode, nickname]
+              properties:
+                petCode:
+                  type: string
+                  enum: [cat, dog, rabbit, fantasy_hamster, little_azure_dragon]
+                nickname:
+                  type: string
+                  minLength: 1
+                  maxLength: 16
+      responses:
+        '201':
+          description: 领养成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetResponse'
+        '409':
+          description: 重复领养或未达到解锁条件
+  /v1/task-instances/{taskId}/submissions:
+    post:
+      summary: 提交单项任务；只推进进度，不在此接口发星星
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [payload]
+              properties:
+                payload: { type: object, additionalProperties: true }
+      responses:
+        '201':
+          description: 已提交，返回自动确认或待家长确认状态
+        '409':
+          description: 任务已关闭、版本冲突或重复提交
+  /v1/submissions/{submissionId}/confirmation:
+    post:
+      summary: 家长确认或驳回提交
+      parameters:
+        - name: submissionId
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [decision]
+              properties:
+                decision: { type: string, enum: [confirmed, rejected] }
+                reason: { type: string, maxLength: 240 }
+      responses:
+        '200': { description: 确认状态已更新并重新计算礼包资格 }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '409': { description: 已处理或状态不可转换 }
+  /v1/children/{childId}/daily-rewards/{localDate}/claim:
+    post:
+      summary: 领取当日唯一星星礼包
+      parameters:
+        - $ref: '#/components/parameters/ChildId'
+        - name: localDate
+          in: path
+          required: true
+          schema: { type: string, format: date }
+        - $ref: '#/components/parameters/IdempotencyKey'
+      responses:
+        '200':
+          description: 首次领取或幂等重放均返回同一结算结果
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RewardClaimResponse'
+        '409': { description: 必做任务未全部确认或礼包不可领取 }
+  /v1/children/{childId}/pets:
+    get:
+      summary: 查询孩子已领养宠物及各自独立状态
+      parameters:
+        - $ref: '#/components/parameters/ChildId'
+      responses:
+        '200':
+          description: 查询成功
+  /v1/pets/{petId}/interactions:
+    post:
+      summary: 执行投喂、清洁、抚摸、玩耍或休息
+      parameters:
+        - name: petId
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [type]
+              properties:
+                type: { type: string, enum: [feed, clean, pet, play, rest] }
+      responses:
+        '200':
+          description: 返回星星余额、宠物状态与阶段变化
+        '409': { description: 星星不足、宠物状态冲突或重复操作 }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    ChildId:
+      name: childId
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema: { type: string, format: uuid }
+  responses:
+    Forbidden:
+      description: 当前监护人无权访问该孩子数据
+  schemas:
+    ApiEnvelope:
+      type: object
+      required: [code, msg, data]
+      properties:
+        code: { type: string, example: OK }
+        msg: { type: string, example: success }
+        data: { nullable: true }
+    TodayResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiEnvelope'
+        - type: object
+          properties:
+            data:
+              type: object
+              required: [localDate, requiredCount, confirmedRequiredCount, rewardStatus, tasks]
+              properties:
+                localDate: { type: string, format: date }
+                requiredCount: { type: integer, minimum: 0 }
+                confirmedRequiredCount: { type: integer, minimum: 0 }
+                rewardStatus: { type: string, enum: [locked, available, claimed] }
+                rewardAmount: { type: integer, minimum: 0, nullable: true }
+                tasks: { type: array, items: { $ref: '#/components/schemas/TaskSummary' } }
+    TaskSummary:
+      type: object
+      required: [id, title, required, confirmationMode, status]
+      properties:
+        id: { type: string, format: uuid }
+        title: { type: string }
+        required: { type: boolean }
+        confirmationMode: { type: string, enum: [automatic, guardian] }
+        status: { type: string, enum: [pending, submitted, confirmed, rejected, cancelled] }
+    PetResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiEnvelope'
+        - type: object
+          properties:
+            data:
+              type: object
+              required: [id, petCode, stage, growthValue]
+              properties:
+                id: { type: string, format: uuid }
+                petCode: { type: string }
+                stage: { type: string, enum: [nursing, juvenile, growth, mature] }
+                growthValue: { type: integer, minimum: 0 }
+    RewardClaimResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiEnvelope'
+        - type: object
+          properties:
+            data:
+              type: object
+              required: [status, amount, balance]
+              properties:
+                status: { type: string, enum: [claimed] }
+                amount: { type: integer, minimum: 0 }
+                balance: { type: integer, minimum: 0 }
+

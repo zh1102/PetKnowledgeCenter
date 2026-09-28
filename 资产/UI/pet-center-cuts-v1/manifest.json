@@ -1,0 +1,17 @@
+{
+  "source": "D:\\ZH\\宠物学堂\\资产\\UI\\child-p08-pet-center-ipad-simple-v4-official-pet.png",
+  "cuts": {
+    "pet-center-house.png": [
+      285,
+      97,
+      110,
+      95
+    ],
+    "pet-center-apple.png": [
+      916,
+      775,
+      62,
+      58
+    ]
+  }
+}

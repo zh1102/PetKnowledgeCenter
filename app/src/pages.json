@@ -1,0 +1,10 @@
+{
+  "pages": [
+    { "path": "pages/index/index", "style": { "navigationStyle": "custom", "navigationBarTitleText": "宠物学堂" } },
+    { "path": "pages/today/index", "style": { "navigationStyle": "custom", "navigationBarTitleText": "今日任务" } },
+    { "path": "pages/adoption/index", "style": { "navigationStyle": "custom", "navigationBarTitleText": "领取你的伙伴" } },
+    { "path": "pages/pet/index", "style": { "navigationStyle": "custom", "navigationBarTitleText": "伙伴档案" } },
+    { "path": "pages/pet-center/index", "style": { "navigationStyle": "custom", "navigationBarTitleText": "宠物中心" } }
+  ],
+  "globalStyle": { "backgroundColor": "#fffcf5", "navigationStyle": "custom" }
+}

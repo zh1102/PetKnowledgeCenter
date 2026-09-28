@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1180" viewBox="0 0 1440 1180">
+  <!-- 宠物学堂 Penpot 设计系统基础板：全部元素保持为可编辑矢量与文本。 -->
+  <defs>
+    <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#7156B8" flood-opacity="0.16"/>
+    </filter>
+    <style>
+      .font{font-family:'PingFang SC','Microsoft YaHei',sans-serif}.title{font-size:32px;font-weight:700;fill:#432B2B}.h2{font-size:22px;font-weight:700;fill:#432B2B}.body{font-size:16px;fill:#655A70}.note{font-size:14px;fill:#877D91}.label{font-size:14px;font-weight:600;fill:#4E3B73}
+    </style>
+  </defs>
+  <rect width="1440" height="1180" fill="#FFFBF3"/>
+  <text class="font title" x="64" y="70">宠物学堂 · Design System v2</text>
+  <text class="font body" x="64" y="102">iPad 优先 · 儿童端低负担 · 阅读打卡 / 三米打卡视觉母版</text>
+
+  <!-- 色彩令牌 -->
+  <g id="Color-Tokens" transform="translate(64 142)">
+    <text class="font h2" x="0" y="0">颜色 Colors</text>
+    <g transform="translate(0 30)"><rect width="150" height="88" rx="18" fill="#FFFBF3" stroke="#E7DFF5"/><text class="font label" x="14" y="112">Cream / #FFFBF3</text></g>
+    <g transform="translate(174 30)"><rect width="150" height="88" rx="18" fill="#F2EDFF"/><text class="font label" x="14" y="112">Lavender / #F2EDFF</text></g>
+    <g transform="translate(348 30)"><rect width="150" height="88" rx="18" fill="#855FE8"/><text class="font label" x="14" y="112">Primary / #855FE8</text></g>
+    <g transform="translate(522 30)"><rect width="150" height="88" rx="18" fill="#432B2B"/><text class="font label" x="14" y="112">Ink / #432B2B</text></g>
+    <g transform="translate(696 30)"><rect width="150" height="88" rx="18" fill="#62C98D"/><text class="font label" x="14" y="112">Success / #62C98D</text></g>
+    <g transform="translate(870 30)"><rect width="150" height="88" rx="18" fill="#FFC64B"/><text class="font label" x="14" y="112">Star / #FFC64B</text></g>
+    <g transform="translate(1044 30)"><rect width="150" height="88" rx="18" fill="#FF6B78"/><text class="font label" x="14" y="112">Error / #FF6B78</text></g>
+  </g>
+
+  <!-- 字体与间距令牌 -->
+  <g id="Typography-Spacing" transform="translate(64 330)">
+    <text class="font h2" x="0" y="0">字体 Typography</text>
+    <text class="font title" x="0" y="52">页面标题 32 / Bold</text>
+    <text class="font h2" x="0" y="96">卡片标题 22 / Bold</text>
+    <text class="font body" x="0" y="134">正文 16 / Regular，儿童核心任务不小于 18px</text>
+    <text class="font note" x="0" y="168">辅助说明 14 / Regular</text>
+    <g transform="translate(600 0)">
+      <text class="font h2" x="0" y="0">间距 Spacing</text>
+      <g transform="translate(0 28)"><rect width="8" height="32" rx="4" fill="#7C5CE5"/><text class="font body" x="24" y="23">8 · 微间距</text></g>
+      <g transform="translate(170 28)"><rect width="16" height="32" rx="4" fill="#7C5CE5"/><text class="font body" x="34" y="23">16 · 组件间距</text></g>
+      <g transform="translate(370 28)"><rect width="24" height="32" rx="4" fill="#7C5CE5"/><text class="font body" x="44" y="23">24 · 卡片内边距</text></g>
+      <g transform="translate(610 28)"><rect width="32" height="32" rx="4" fill="#7C5CE5"/><text class="font body" x="52" y="23">32 · 区块间距</text></g>
+    </g>
+  </g>
+
+  <!-- 按钮组件 -->
+  <g id="Buttons" transform="translate(64 550)">
+    <text class="font h2" x="0" y="0">按钮 Buttons · 高度 52 · 圆角 16 · 最小热区 44</text>
+    <g id="Button-Primary" transform="translate(0 30)"><rect width="200" height="52" rx="16" fill="#855FE8"/><text class="font" x="100" y="33" text-anchor="middle" font-size="17" font-weight="700" fill="#FFFFFF">主要操作</text></g>
+    <g id="Button-Secondary" transform="translate(220 30)"><rect width="200" height="52" rx="16" fill="#FFFFFF" stroke="#A996EA" stroke-width="1.5"/><text class="font" x="100" y="33" text-anchor="middle" font-size="17" font-weight="700" fill="#5E43B8">次要操作</text></g>
+    <g id="Button-Disabled" transform="translate(440 30)"><rect width="200" height="52" rx="16" fill="#E8E5ED"/><text class="font" x="100" y="33" text-anchor="middle" font-size="17" font-weight="700" fill="#9A94A4">暂不可用</text></g>
+    <g id="Button-Danger" transform="translate(660 30)"><rect width="200" height="52" rx="16" fill="#FFFFFF" stroke="#FF6B78" stroke-width="1.5"/><text class="font" x="100" y="33" text-anchor="middle" font-size="17" font-weight="700" fill="#D94A58">退回并说明</text></g>
+  </g>
+
+  <!-- 卡片与阴影 -->
+  <g id="Cards" transform="translate(64 680)">
+    <text class="font h2" x="0" y="0">卡片 Cards · 圆角 20/24 · 单层柔和阴影</text>
+    <g id="Card-Default" transform="translate(0 30)" filter="url(#cardShadow)"><rect width="380" height="150" rx="24" fill="#FFFFFF" stroke="#E4DDF4"/><text class="font h2" x="24" y="42">默认内容卡</text><text class="font body" x="24" y="76">内边距 24，边框 1px。</text><text class="font note" x="24" y="108">同类信息保持相同高度。</text></g>
+    <g id="Card-Selected" transform="translate(410 30)" filter="url(#cardShadow)"><rect width="380" height="150" rx="24" fill="#FFFFFF" stroke="#7C5CE5" stroke-width="3"/><text class="font h2" x="24" y="42">选中内容卡</text><text class="font body" x="24" y="76">粗边 + 状态文字，不只靠颜色。</text><text class="font label" x="24" y="112">当前</text></g>
+  </g>
+
+  <!-- 左侧导航组件 -->
+  <g id="Sidebar-Navigation" transform="translate(890 330)">
+    <rect width="220" height="520" rx="26" fill="#F2EDFF"/>
+    <text class="font h2" x="28" y="52">宠物学堂</text><text class="font note" x="28" y="78">让每个孩子爱上学习</text>
+    <g id="Nav-Selected" transform="translate(16 112)"><rect width="188" height="64" rx="16" fill="#855FE8"/><path d="M26 34V23l12-10 12 10v11h-8v-8h-8v8z" fill="none" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/><text class="font" x="66" y="40" font-size="18" font-weight="700" fill="#FFFFFF">今日</text></g>
+    <g id="Nav-Default-1" transform="translate(16 190)"><path d="M24 17c7-3 12-2 16 2v25c-4-4-9-5-16-2zm32 0c-7-3-12-2-16 2v25c4-4 9-5 16-2z" fill="none" stroke="#6D50C8" stroke-width="2.4" stroke-linejoin="round"/><text class="font body" x="68" y="36">语文</text></g>
+    <g id="Nav-Default-2" transform="translate(16 254)"><rect x="24" y="13" width="32" height="34" rx="7" fill="none" stroke="#6D50C8" stroke-width="2.4"/><path d="M31 22h18M32 31h4m7 0h6m-17 8h4m7 0h6" stroke="#6D50C8" stroke-width="2.4" stroke-linecap="round"/><text class="font body" x="68" y="36">数感</text></g>
+    <g id="Nav-Default-3" transform="translate(16 318)"><text class="font" x="22" y="38" font-size="25" font-weight="700" fill="#6D50C8">Aa</text><text class="font body" x="68" y="36">英语</text></g>
+    <g id="Nav-Default-4" transform="translate(16 382)"><path d="M25 31c0-9 6-15 15-15s15 6 15 15c0 10-7 15-15 15s-15-5-15-15zM30 18l-2-8 8 5m14 3 2-8-8 5" fill="none" stroke="#6D50C8" stroke-width="2.4" stroke-linejoin="round"/><circle cx="35" cy="30" r="2" fill="#6D50C8"/><circle cx="45" cy="30" r="2" fill="#6D50C8"/><path d="M36 37c3 2 5 2 8 0" fill="none" stroke="#6D50C8" stroke-width="2" stroke-linecap="round"/><text class="font body" x="68" y="36">宠物</text></g>
+    <line x1="24" y1="446" x2="196" y2="446" stroke="#D5C9F2"/>
+    <text class="font note" x="28" y="486">iPad 固定宽度约 176px</text>
+  </g>
+
+  <!-- 弹窗组件 -->
+  <g id="Dialog" transform="translate(64 930)">
+    <text class="font h2" x="0" y="0">弹窗 Dialog · 遮罩 40% · 圆角 24 · 内边距 24</text>
+    <g transform="translate(0 28)"><rect width="790" height="190" rx="24" fill="#FFFFFF" stroke="#E4DDF4" filter="url(#cardShadow)"/><text class="font h2" x="28" y="44">确认提交吗？</text><text class="font body" x="28" y="78">说明提交后的结果，并提供安全返回路径。</text><g transform="translate(350 112)"><rect width="190" height="52" rx="16" fill="#FFFFFF" stroke="#A996EA"/><text class="font label" x="95" y="32" text-anchor="middle">返回检查</text></g><g transform="translate(560 112)"><rect width="190" height="52" rx="16" fill="#7C5CE5"/><text class="font" x="95" y="33" text-anchor="middle" font-size="16" font-weight="700" fill="#FFFFFF">确认提交</text></g></g>
+  </g>
+</svg>

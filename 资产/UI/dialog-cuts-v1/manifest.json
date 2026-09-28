@@ -1,0 +1,24 @@
+{
+  "source": "D:\\ZH\\宠物学堂\\资产\\UI\\child-p24-dialog-states-ipad-simple-v2-official-pets.png",
+  "cuts": {
+    "dialog-task.png": [
+      714,
+      188,
+      220,
+      146
+    ],
+    "dialog-gift.png": [
+      700,
+      639,
+      232,
+      137
+    ],
+    "dialog-close.png": [
+      949,
+      196,
+      20,
+      19
+    ]
+  },
+  "operation": "crop-only"
+}

@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>产品需求文档</title>
+</head>
+<body>
+<main id="prdContent"><section>
+  <h1>宠物学堂高保真原型 PRD</h1>
+  <p><strong>版本：</strong>v1.1　<strong>日期：</strong>2026-09-11　<strong>状态：</strong>MVP 规则冻结评审版</p>
+  <p><strong>目标：</strong>以“家长配置适龄任务 → 孩子完成学习或健康行为 → 获得正向反馈与成长资源 → 照料宠物并解锁成长 → 家长查看真实进展并调整任务”为唯一主闭环，验证幼小衔接儿童是否能理解任务与奖励关系，以及家长是否能低成本配置与复盘。</p>
+</section>
+
+<section>
+  <h2>1. 范围与关键决策</h2>
+  <table><thead><tr><th>类别</th><th>本版结论</th></tr></thead><tbody>
+    <tr><td>正式终端</td><td>iOS/iPadOS 与 Android App；iPad 横竖屏为一级目标，手机横竖屏保持可用。</td></tr>
+    <tr><td>首轮内容基线</td><td>幼小衔接至一年级；年龄只影响初始推荐，家长可按能力调整。</td></tr>
+    <tr><td>奖励</td><td>只使用“星星”一种可消费货币；全部必做任务确认后领取每日一次 20 星礼包。投喂消耗 5 星并增加 5 成长值，每日最多 4 次。</td></tr>
+    <tr><td>宠物</td><td>常见伙伴为小猫、小狗、兔子；幻想伙伴为星点小仓鼠和小青龙；每只经历哺育期、幼态期、成长期、成熟期。遗漏任务不造成退化、疾病、死亡、离家或倒扣。</td></tr>
+    <tr><td>内容</td><td>只展示已审核、已分级、可追溯内容；AI 只能形成后台草稿。</td></tr>
+    <tr><td>命名</td><td>儿童界面使用“猫咪成长中心”；“试验品中心”仅保留为历史结构称呼。</td></tr>
+    <tr><td>明确不做</td><td>支付、广告、排行榜、公开社交、聊天、抽卡、3D/AR、AI 自由对话。</td></tr>
+  </tbody></table>
+</section>
+
+<section>
+  <h2>2. 用户与成功标准</h2>
+  <ul>
+    <li><strong>孩子：</strong>无需阅读说明即可看到阅读打卡、英语打卡、三米打卡、数学天天练、讲数学题五项任务，完成后理解获得了什么，以及如何用于陪伴猫咪。</li>
+    <li><strong>家长：</strong>5 分钟内完成孩子档案与一周基础计划配置；每周能看见有证据的进展并调整未来计划。</li>
+    <li><strong>产品：</strong>重点观察 7 日内至少 4 天完成一个学习任务、完成后进入宠物互动、家长每周查看或调整计划的比例；不把屏幕时长增长作为成功。</li>
+  </ul>
+</section>
+
+<section>
+  <h2>3. 业务流程</h2>
+  <iframe class="prototype-iframe no-edit" src="../流程图/宠物学堂高保真原型-flow.html" title="宠物学堂核心业务流程" style="width:100%;height:620px;border:1px solid #ddd;border-radius:12px"></iframe>
+  <p>交互页面流转详见：<a href="../流程图/宠物学堂高保真原型-screenflow.html">交互流程图</a>。</p>
+</section>
+
+<section>
+  <h2>4. 详细方案</h2>
+  <table>
+    <thead><tr><th>一级模块</th><th>二级功能</th><th>原型</th><th>描述</th></tr></thead>
+    <tbody>
+      <tr data-preview="today-ipad-landscape"><td rowspan="2">今日任务</td><td>iPad 横屏</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#today-ipad-landscape" title="iPad 横屏今日任务"></iframe></div></td><td>【页面元素】固定 176px 左栏、当前伙伴、今日进度、阅读打卡、英语打卡、三米打卡、数学天天练、讲数学题和今日星星礼包。<br>【交互说明】完成单项 → 今日进度 +1，不增加星星；全部必做项完成且需确认项通过 → 礼包按钮解锁；领取 → 一次性增加今日星星并可去宠物中心。<br>【功能逻辑】选做任务不影响礼包；礼包数在当日任务生成时锁定，每个孩子每日只结算一次。<br>【边界说明】无计划、等待家长确认、全部完成待领取、礼包已领取、离线和同步失败均有独立反馈。</td></tr>
+      <tr data-preview="today-ipad-portrait"><td>iPad 竖屏</td><td><div class="prototype-frame" data-pw="768" data-ph="1024"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#today-ipad-portrait" title="iPad 竖屏今日任务"></iframe></div></td><td>【页面元素】保留固定导航，将横屏主从布局调整为加宽单栏。<br>【功能逻辑】旋转只改变布局，不重新出题、不重置计时、音频、录音或描红进度。</td></tr>
+      <tr data-preview="pinyin-correction"><td rowspan="8">学习任务</td><td>拼音跟读</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#pinyin-correction" title="拼音跟读"></iframe></div></td><td>【页面元素】四声卡、慢速播放、跟读波形、具体声调提示。<br>【交互说明】跟读失败 → 指出声母/韵母/声调具体问题并允许重听、重录或家长确认。<br>【边界说明】低置信度不得自动判孩子失败。</td></tr>
+      <tr data-preview="hanzi-tracing"><td>生字描红</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#hanzi-tracing" title="生字描红"></iframe></div></td><td>【页面元素】拼音、大字、笔顺、组词、田字格、撤销与清空。<br>【功能逻辑】一笔完成后保存归一化轨迹；自动识别只作提示，不作为唯一失败条件。</td></tr>
+      <tr data-preview="math-ten"><td>凑十法</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#math-ten" title="凑十法"></iframe></div></td><td>【页面元素】题目、十格框、拆分步骤、答案区与原位提示。<br>【交互说明】连续答错 → 降低交互难度并显示分步提示，不立即泄露最终答案。</td></tr>
+      <tr data-preview="schulte"><td>舒尔特方格</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#schulte" title="舒尔特方格"></iframe></div></td><td>【页面元素】5×5 方格、独立计时、误触与下一数字。<br>【功能逻辑】每组独立随机与计时；组间休息 10–20 秒，仅展示个人变化，不输出诊断或排名。</td></tr>
+      <tr data-preview="english-reader"><td>英语</td><td>分级跟读与日常互动</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#english-reader" title="英语跟读"></iframe></div></td><td>【数据与内容规则】原型只使用原创 A 级示例，不复制 RAZ 正文、插画或音频。<br>【交互说明】播放/慢速/跟读可操作；日常回答允许替换关键词，不限定唯一背诵答案。</td></tr>
+      <tr data-preview="math-explain"><td>讲数学题</td><td>当面讲或录音讲</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#math-explain" title="讲数学题"></iframe></div></td><td>【页面元素】审核题库题目、题意/思路/答案三步提示、当面讲与录音讲选择、提交确认按钮。<br>【交互说明】选择提交方式并完成讲解 → 提交后进入等待家长确认；家长通过后今日进度 +1，退回后显示原因并允许重讲。<br>【功能逻辑】两种方式均由家长最终确认；系统只辅助校验答案、空录音和步骤完整性，不直接判定讲解通过。<br>【边界说明】录音默认关闭，启用前需监护人同意；题目当日锁定，刷新和换设备不得换题。</td></tr>
+      <tr data-preview="reading-checkin"><td>阅读打卡</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#reading-checkin" title="阅读打卡"></iframe></div></td><td>【页面元素】家长配置的阅读目标、计时状态、书名与阅读位置选填、提交按钮。<br>【交互说明】提交前确认 → 进入等待家长确认；通过后今日进度 +1，退回后显示原因并可重新提交。<br>【功能逻辑】不强制上传照片；空选填项不阻止提交。<br>【边界说明】超长文字原位提示并保留草稿；离线仅保存待同步状态。</td></tr>
+      <tr data-preview="sanmi-checkin"><td>三米打卡</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#sanmi-checkin" title="三米打卡"></iframe></div></td><td>【页面元素】三米老师任务说明、材料、预计时长、当面完成与录音提交。<br>【交互说明】选择方式并提交 → 等待家长确认。<br>【功能逻辑】三米是教师名，内容来自家长配置或审核材料；系统不临时自由生成任务。<br>【边界说明】无录音授权时保留当面完成；材料缺失或下架时禁止提交空任务。</td></tr>
+      <tr data-preview="dialog-states"><td>关键弹窗</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#dialog-states" title="关键弹窗与底部面板"></iframe></div></td><td>【页面元素】退出保存、提交确认、录音授权/预览、待确认/退回、礼包、领养和投喂弹窗。<br>【交互说明】每个高风险动作先说明后果并提供主次动作；关闭后保留原页面上下文。<br>【功能逻辑】重复提交、礼包领取、首宠创建与投喂均需幂等。<br>【边界说明】失败不伪装成功；余额不足、超限、拒绝授权均有不损失数据的回退。</td></tr>
+      <tr data-preview="pet-center"><td>宠物成长</td><td>投喂、成长与继续领养</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#pet-center" title="宠物中心"></iframe></div></td><td>【页面元素】当前伙伴、成长值、星星余额、投喂动作、已领养数量和“领养新伙伴”入口。<br>【交互说明】消耗 5 星投喂 → 当前宠物成长值 +5；点击领养新伙伴 → 查看第二只及更多伙伴的里程碑。<br>【功能逻辑】每日最多 4 次付费投喂；每只伙伴独立保存阶段与状态；阶段门槛为 50/200/500，只前进不倒退。<br>【边界说明】余额不足只提示完成今日必做任务领取礼包，不出现购买入口；未完成某日任务仍可免费抚摸。</td></tr>
+      <tr data-preview="calendar-review"><td>成长复盘</td><td>月历与总结</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#calendar-review" title="成长月历"></iframe></div></td><td>【页面元素】完成、部分完成、遗漏与今天均使用图形和文字语义。<br>【数据与内容规则】月末结论必须引用任务事实，不使用智力、性格或医学判断。</td></tr>
+      <tr data-preview="parent-plan"><td rowspan="2">家长区</td><td>周计划与家庭学习任务</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#parent-plan" title="家长计划"></iframe></div></td><td>【页面元素】提供阅读打卡、英语打卡、三米打卡、数学天天练、讲数学题五项首页任务；首屏配置启用、频率、时长/题量及能力档，高级设置承载教材、证明方式和奖励。<br>【交互说明】选择模板并填写配置 → 生成未来任务预览；启用计划 → 仅影响生效日之后的任务。<br>【功能逻辑】数学天天练复用系统题库并自动批改；阅读、英语、三米打卡及讲数学题默认由家长确认；讲数学题支持当面讲或录音讲，系统只提供辅助检查。默认采用中国大众幼小至小学低年级衔接难度，可选启蒙、幼小衔接、一年级基础、一年级巩固。<br>【边界说明】同一任务不得从系统练习和家庭打卡两个入口重复结算；录音、照片默认关闭，MVP 不默认采集视频；超出每日时长或奖励上限时阻止启用并给出调整建议。<br>【前置条件与权限】长按入口后完成成人验证；敏感配置仍需监护人令牌。</td></tr>
+      <tr data-preview="parent-report"><td>周报与调整</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#parent-report" title="家长周报"></iframe></div></td><td>【页面元素】计划完成、主动订正、待确认、科目分布和最多三条建议。<br>【交互说明】采用建议 → 回到计划并由家长确认；建议可关闭。</td></tr>
+      <tr data-preview="mobile-home"><td rowspan="2">手机适配</td><td>竖屏首页</td><td><div class="prototype-frame" data-pw="390" data-ph="844"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#mobile-home" title="手机竖屏首页"></iframe></div></td><td>【页面元素】64px 固定一级图标栏、顶部二级标签、单列任务流。<br>【边界说明】360px 仍需保留可读内容宽度，不将完整文字塞入侧栏。</td></tr>
+      <tr data-preview="mobile-quiz"><td>横屏答题</td><td><div class="prototype-frame" data-pw="844" data-ph="390"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#mobile-quiz" title="手机横屏答题"></iframe></div></td><td>【页面元素】题干/示范与反馈/操作紧凑双栏。<br>【边界说明】垂直高度不足时内容独立滚动，主要操作保持可见。</td></tr>
+      <tr data-preview="system-states"><td>通用状态</td><td>异常与恢复</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#system-states" title="通用状态"></iframe></div></td><td>【页面元素】加载、空内容、离线、提交失败、已完成、内容下架。<br>【功能逻辑】离线结果显示等待同步；失败保留草稿；重复操作返回原结算，不重复发星。</td></tr>
+      <tr data-preview="pet-adoption"><td rowspan="6">宠物中心扩展</td><td>首次及后续领养</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#pet-adoption" title="首次及后续领养"></iframe></div></td><td>【页面元素】小猫、小狗、兔子三只常见伙伴、性格提示、后续伙伴和领养记录入口。<br>【交互说明】首次登录选择伙伴 → 确认领养 → 进入今日任务；从宠物中心再次进入 → 达到里程碑后领养第二只及更多伙伴。<br>【功能逻辑】首只伙伴免费；后续伙伴按确定性学习里程碑开放，每只独立成长；确认前允许更换。<br>【边界说明】未完成首次领养不能跳过进入今日任务；不得使用抽卡、概率、现金购买或虚假倒计时。</td></tr>
+      <tr data-preview="pet-detail"><td>伙伴详情</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#pet-detail" title="伙伴详情"></iframe></div></td><td>【页面元素】当前宠物、阶段、五项状态、成长目标、衣橱和成长路线入口。<br>【边界说明】状态下降不造成退化或损失。</td></tr>
+      <tr data-preview="pet-growth-path"><td>四阶段成长</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#pet-growth-path" title="四阶段成长"></iframe></div></td><td>【功能逻辑】哺育期 0–49 → 幼态期 50–199 → 成长期 200–499 → 成熟期 500+；按每只宠物独立成长值推进，只前进不倒退，且不提高学习奖励。</td></tr>
+      <tr data-preview="pet-wardrobe"><td>装扮衣橱</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#pet-wardrobe" title="装扮衣橱"></iframe></div></td><td>【页面元素】头部、颈部、身体、背部和家居分类。<br>【功能逻辑】装扮只改变外观；不适用当前物种或阶段时禁止选择且不扣星。</td></tr>
+      <tr data-preview="pet-fantasy-lock"><td>幻想伙伴</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#pet-fantasy-lock" title="幻想伙伴解锁"></iframe></div></td><td>【页面元素】星点小仓鼠、小青龙和确定性进度。<br>【功能逻辑】仓鼠需 30 个礼包日及语数英各 5 个确认任务；小青龙需 60 个礼包日及四类各 10 个确认任务。达标资格永久保留，不消耗星星。</td></tr>
+      <tr data-preview="pet-future"><td>未来伙伴</td><td><div class="prototype-frame" data-pw="1024" data-ph="768"><iframe class="prototype-iframe" src="../原型/宠物学堂高保真原型-prototype.html#pet-future" title="未来伙伴"></iframe></div></td><td>【页面元素】中性剪影和“更多伙伴正在准备中”。<br>【边界说明】不展示具体承诺、虚假倒计时、价格、稀有度或预付入口。</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>5. 视觉与交互规范</h2>
+  <ul>
+    <li>暖白 #FFFDF7、淡紫 #EEE9FF、淡黄 #FFF4C7；完成绿 #77BFA3、提醒橙 #F2B66D、错误红 #D96C6C。</li>
+    <li>儿童正文不小于 16px，核心任务不小于 18px，点击热区不小于 44×44pt；状态配合图标、文字或形状。</li>
+    <li>iPad 使用约 176px 固定左栏；手机使用 64px 固定图标栏。横屏采用主从/紧凑双栏，竖屏按阅读顺序排列。</li>
+    <li>动画只用于确认、情绪和成长，1–2 秒可跳过；系统减少动态效果时停用连续动画并显示静态反馈。</li>
+  </ul>
+</section>
+
+<section>
+  <h2>6. 状态、权限与异常</h2>
+  <table><thead><tr><th>场景</th><th>产品规则</th><th>可观察结果</th></tr></thead><tbody>
+    <tr><td>重复提交</td><td>每个任务实例只结算一次，服务端幂等。</td><td>返回原结算结果，余额不二次增加。</td></tr>
+    <tr><td>离线完成</td><td>保存题目级草稿和待同步操作，余额不是本地事实源。</td><td>显示“等待同步”，恢复网络后按顺序重试。</td></tr>
+    <tr><td>家长确认</td><td>需要确认的任务不会超时自动通过，可跨日处理；确认后解锁原日期礼包。</td><td>儿童看到中性等待文案，不出现负面标签；礼包不因晚确认失效。</td></tr>
+    <tr><td>内容下架</td><td>停止展示下架内容并保留已作答事实。</td><td>切换到安全兜底任务，奖励按确定规则处理。</td></tr>
+    <tr><td>跨日/时区</td><td>按任务实例原业务日期归属；更改时区只影响未来任务，礼包不设置失效日期。</td><td>不会通过改系统时间重复领奖，晚确认仍回到原日期结算。</td></tr>
+    <tr><td>家长区</td><td>入口有家长门，导出/删除还需重新认证与审计。</td><td>儿童误触不能进入敏感操作。</td></tr>
+  </tbody></table>
+</section>
+
+<section>
+  <h2>7. 数据埋点</h2>
+  <table><thead><tr><th>事件</th><th>触发</th><th>允许字段</th><th>禁止字段</th></tr></thead><tbody>
+    <tr><td>task_started</td><td>进入任务</td><td>匿名孩子键、任务类型、内容版本、入口</td><td rowspan="4">昵称、自由文本答案、录音、图片、手机号、精确位置、广告标识</td></tr>
+    <tr><td>task_submitted</td><td>提交</td><td>任务类型、尝试次数、在线状态、结果状态</td></tr>
+    <tr><td>reward_confirmed</td><td>服务端结算</td><td>奖励档位、幂等命中、耗时</td></tr>
+    <tr><td>pet_interaction</td><td>照料操作</td><td>互动类型、来源页面、成功/失败原因</td></tr>
+  </tbody></table>
+</section>
+
+<section>
+  <h2>8. 上线与验收</h2>
+  <p>本轮只交付可评审高保真原型，不代表真实录音、Canvas、离线同步或服务端奖励已经实现。进入开发前先验证 uni-app 固定导航、描红、音频中断、动画降级与 SQLite 幂等队列技术样板。</p>
+  <p><strong>验收视口：</strong>360×640、640×360、390×844、844×390、768×1024、1024×768、820×1180、1180×820、1024×1366、1366×1024。</p>
+</section>
+
+<section>
+  <h2>9. 未决项与残余风险</h2>
+  <ul>
+    <li>首发最低系统版本、真实设备清单、教材版本、内容权利和语音供应商仍待确认。</li>
+    <li>“猫咪成长中心”为本版建议名称；正式品牌命名需要产品负责人最终确认。</li>
+    <li>已完成关键页面浏览器验证；完整真机视口矩阵仍需在 uni-app 技术样板阶段执行。</li>
+    <li>Penpot MCP 当前未连接，本轮产物保存在磁盘，尚未同步到 Penpot 文件。</li>
+  </ul>
+</section>
+</main>
+<script id="prdPages" type="application/json">[{"value": "today-ipad-landscape", "label": "P01 · iPad 横屏｜今日任务", "url": "../原型/宠物学堂高保真原型-prototype.html#today-ipad-landscape", "w": 1024, "h": 768}, {"value": "today-ipad-portrait", "label": "P02 · iPad 竖屏｜今日任务", "url": "../原型/宠物学堂高保真原型-prototype.html#today-ipad-portrait", "w": 768, "h": 1024}, {"value": "pinyin-correction", "label": "P03 · 拼音｜四声跟读纠错", "url": "../原型/宠物学堂高保真原型-prototype.html#pinyin-correction", "w": 1024, "h": 768}, {"value": "hanzi-tracing", "label": "P04 · 生字｜笔顺与描红", "url": "../原型/宠物学堂高保真原型-prototype.html#hanzi-tracing", "w": 1024, "h": 768}, {"value": "math-ten", "label": "P05 · 数感｜凑十法答错提示", "url": "../原型/宠物学堂高保真原型-prototype.html#math-ten", "w": 1024, "h": 768}, {"value": "schulte", "label": "P06 · 专注力｜舒尔特方格", "url": "../原型/宠物学堂高保真原型-prototype.html#schulte", "w": 1024, "h": 768}, {"value": "english-reader", "label": "P07 · 英语｜分级跟读与互动", "url": "../原型/宠物学堂高保真原型-prototype.html#english-reader", "w": 1024, "h": 768}, {"value": "pet-center", "label": "P08 · 猫咪成长中心｜喂食", "url": "../原型/宠物学堂高保真原型-prototype.html#pet-center", "w": 1024, "h": 768}, {"value": "calendar-review", "label": "P09 · 月历｜月末总结", "url": "../原型/宠物学堂高保真原型-prototype.html#calendar-review", "w": 1024, "h": 768}, {"value": "parent-plan", "label": "P10 · 家长区｜配置周计划", "url": "../原型/宠物学堂高保真原型-prototype.html#parent-plan", "w": 1024, "h": 768}, {"value": "parent-report", "label": "P11 · 家长区｜周报与调整", "url": "../原型/宠物学堂高保真原型-prototype.html#parent-report", "w": 1024, "h": 768}, {"value": "mobile-home", "label": "P12 · 手机竖屏｜今日任务", "url": "../原型/宠物学堂高保真原型-prototype.html#mobile-home", "w": 390, "h": 844}, {"value": "mobile-quiz", "label": "P13 · 手机横屏｜拼音答题", "url": "../原型/宠物学堂高保真原型-prototype.html#mobile-quiz", "w": 844, "h": 390}, {"value": "system-states", "label": "P14 · 通用状态｜加载/离线/失败", "url": "../原型/宠物学堂高保真原型-prototype.html#system-states", "w": 1024, "h": 768}, {"value": "pet-adoption", "label": "P15 · 宠物中心｜首次领养", "url": "../原型/宠物学堂高保真原型-prototype.html#pet-adoption", "w": 1024, "h": 768}, {"value": "pet-detail", "label": "P16 · 宠物中心｜伙伴详情", "url": "../原型/宠物学堂高保真原型-prototype.html#pet-detail", "w": 1024, "h": 768}, {"value": "pet-growth-path", "label": "P17 · 宠物中心｜四阶段成长", "url": "../原型/宠物学堂高保真原型-prototype.html#pet-growth-path", "w": 1024, "h": 768}, {"value": "pet-wardrobe", "label": "P18 · 宠物中心｜装扮衣橱", "url": "../原型/宠物学堂高保真原型-prototype.html#pet-wardrobe", "w": 1024, "h": 768}, {"value": "pet-fantasy-lock", "label": "P19 · 宠物中心｜幻想伙伴解锁", "url": "../原型/宠物学堂高保真原型-prototype.html#pet-fantasy-lock", "w": 1024, "h": 768}, {"value": "pet-future", "label": "P20 · 宠物中心｜未来伙伴", "url": "../原型/宠物学堂高保真原型-prototype.html#pet-future", "w": 1024, "h": 768}, {"value": "math-explain", "label": "P21 · 数学｜讲数学题", "url": "../原型/宠物学堂高保真原型-prototype.html#math-explain", "w": 1024, "h": 768}]</script>
+<script>
+// 新增页面通过同一目录数据注入，保持 PRD 双栏预览与原型稳定 hash 一致。
+(() => {
+  const slot = document.querySelector('#prdPages');
+  const list = JSON.parse(slot.textContent);
+  list.push(
+    {value:'reading-checkin',label:'P22 · 阅读｜阅读打卡',url:'../原型/宠物学堂高保真原型-prototype.html#reading-checkin',w:1024,h:768},
+    {value:'sanmi-checkin',label:'P23 · 英语｜三米打卡',url:'../原型/宠物学堂高保真原型-prototype.html#sanmi-checkin',w:1024,h:768},
+    {value:'dialog-states',label:'P24 · 通用交互｜关键弹窗与底部面板',url:'../原型/宠物学堂高保真原型-prototype.html#dialog-states',w:1024,h:768}
+  );
+  slot.textContent = JSON.stringify(list);
+})();
+</script>
+<script src="../../scripts/pm-runtime-config.js"></script>
+<script>(function () {
+  'use strict';
+  const cfg = window.PM_RUNTIME || {};
+  const server = cfg.server, launcher = cfg.launcher;
+  const revisions = new Map();
+  let readyPromise = null, exporting = false;
+  const path = () => decodeURIComponent(location.pathname);
+  function configCheck() {
+    if (cfg.readOnly) throw new Error('当前为只读分享模式，请在本地项目执行此操作');
+    if (!server || !cfg.projectId || !cfg.token) throw new Error('项目配置缺失，请初始化项目并加载 pm-runtime-config.js');
+  }
+  async function request(url, payload) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 120000);
+    try {
+      const response = await fetch(url, {
+        method: payload === undefined ? 'GET' : 'POST',
+        headers: {'Content-Type':'application/json', 'X-PM-Project':cfg.projectId, 'X-PM-Token':cfg.token},
+        body: payload === undefined ? undefined : JSON.stringify(payload),
+        cache:'no-store', signal:controller.signal
+      });
+      const data = await response.json();
+      if (!response.ok || data.error) throw new Error(data.error || ('HTTP ' + response.status));
+      return data;
+    } finally { clearTimeout(timer); }
+  }
+  async function health() {
+    const response = await fetch(server + '/api/health', {cache:'no-store', signal:AbortSignal.timeout(3000)});
+    const state = await response.json();
+    if (state.project_id !== cfg.projectId) {
+      const error = new Error('连接到了其他项目，请检查项目配置和端口');
+      error.identity = true; throw error;
+    }
+    if (state.read_only) { const e = new Error('当前服务为只读模式'); e.identity = true; throw e; }
+    return state;
+  }
+  async function ensureReady() {
+    configCheck();
+    if (readyPromise) return readyPromise;
+    readyPromise = (async () => {
+      try { return await health(); } catch (e) { if (e.identity) throw e; }
+      let launch;
+      try { launch = await request(launcher + '/api/launch', {}); }
+      catch (e) { throw new Error('服务未启动。请运行 python3 scripts/start_service.py --serve。' + e.message); }
+      if (!launch.ok) throw new Error(launch.error || '启动失败');
+      const deadline = Date.now() + 45000;
+      while (Date.now() < deadline) {
+        try { return await health(); } catch (e) { if (e.identity) throw e; }
+        await new Promise(r => setTimeout(r, 600));
+      }
+      throw new Error('启动超时，请在终端执行 --check 查看具体依赖问题');
+    })().finally(() => { readyPromise = null; });
+    return readyPromise;
+  }
+  async function api(route, payload) {
+    await ensureReady();
+    return request(server + route, payload);
+  }
+  async function revision(file) {
+    const data = await api('/api/revision', {path:file || path()});
+    revisions.set(file || path(), data.revision);
+    return data.revision;
+  }
+  async function save(content, file) {
+    file = file || path();
+    if (!revisions.has(file)) throw new Error('尚未读取文件版本，请重新加载页面后再保存');
+    const data = await api('/api/save-html', {path:file, content, revision:revisions.get(file)});
+    revisions.set(file, data.revision);
+    return data;
+  }
+  async function snapshot(src, opts) {
+    opts = opts || {};
+    return api('/api/snapshot', {src, base:opts.base || path(), scale:opts.scale || 2,
+      viewport:opts.viewport, force:!!opts.force});
+  }
+  async function asset(src, opts) {
+    return api('/api/asset', {src, base:(opts || {}).base || path()});
+  }
+  async function exportAll(button) {
+    if (exporting) return;
+    exporting = true;
+    const previous = button && button.textContent;
+    if (button) {button.disabled = true; button.textContent = '正在连接导出服务…';}
+    try {
+      const job = await api('/api/screenshot', {path:path(), viewport:{width:innerWidth, height:innerHeight}});
+      if (!job.started) throw new Error('导出任务没有启动');
+      const deadline = Date.now() + 300000;
+      while (Date.now() < deadline) {
+        const state = await request(server + '/api/status');
+        if (state.job_id !== job.job_id) throw new Error('导出任务已切换，请重新确认结果');
+        if (button) button.textContent = '正在导出 ' + state.progress + '/' + state.total;
+        if (state.done) {
+          if (button) button.textContent = '已导出 ' + state.success_count + ' 张 PNG';
+          window.parent.postMessage('export-success', '*');
+          return state;
+        }
+        await new Promise(r => setTimeout(r, 700));
+      }
+      throw new Error('导出等待超时，请查看服务日志');
+    } catch (e) {
+      if (button) button.textContent = '导出失败';
+      window.alert(e.message);
+      window.parent.postMessage('export-error', '*');
+    } finally {
+      exporting = false;
+      if (button) {button.disabled = false; setTimeout(() => button.textContent = previous, 2500);}
+    }
+  }
+  document.addEventListener('click', event => {
+    const button = event.target.closest('#exportFab, .export-btn, .export-fab');
+    if (!button) return;
+    event.preventDefault(); event.stopImmediatePropagation();
+    exportAll(button);
+  }, true);
+  window.addEventListener('message', event => {
+    if (event.source !== window.parent || event.data !== 'trigger-export') return;
+    exportAll(document.querySelector('#exportFab, .export-btn, .export-fab'));
+  });
+  window.PMService = {revision, save, api, health};
+  window.exportPrototypeViaServer = exportAll;
+  window.snapshotPrototypeViaServer = snapshot;
+  window.inlineAssetViaServer = asset;
+  window.ensureExportServerReady = ensureReady;
+})();
+</script>
+<script>(function () {
+  'use strict';
+  if (window.PMDocument) return;
+  const originals = new WeakMap();
+  const ui = '[data-pm-ui]';
+  const styles = document.createElement('style');
+  styles.dataset.pmUi = 'style';
+  styles.textContent = [
+    'body{font-family:system-ui,sans-serif;color:#243530;margin:0;padding:28px;background:#f7f9f8}',
+    '#prdContent{max-width:1320px;margin:auto}table{border-collapse:collapse;table-layout:fixed;width:100%;margin:18px 0}th,td{border:1px solid #dce4e0;padding:12px;position:relative;vertical-align:top;overflow-wrap:anywhere}th{background:#eef4f1}.prototype-frame{width:100%;min-width:0}',
+    '.pm-controls{display:flex;gap:4px;position:absolute;left:0;bottom:0;opacity:0;z-index:3}tr:hover .pm-controls{opacity:1}.pm-controls button{font-size:11px;padding:1px 7px}',
+    '.pm-col{position:absolute;right:0;top:0;width:6px;height:100%;cursor:col-resize}.pm-row{position:absolute;left:0;bottom:0;height:5px;width:100%;cursor:row-resize}',
+    '.pm-edited{background:#e6f5ec}.pm-toolbar{position:fixed;bottom:18px;left:18px;display:flex;gap:8px;z-index:25;flex-wrap:wrap;max-width:90vw}',
+    '.pm-toolbar button,.pm-preview button{padding:9px 12px;border:1px solid #d5e5de;border-radius:8px;cursor:pointer;background:white;color:#21654f}',
+    '.pm-status{position:fixed;left:18px;bottom:68px;max-width:500px;padding:10px;border-radius:8px;background:#173d32;color:white;z-index:26;display:none}.pm-status.show{display:block}',
+    '.pm-preview{position:fixed;right:0;top:0;height:100vh;width:var(--pm-panel,480px);background:#182622;color:#fff;z-index:20;display:flex;flex-direction:column}.pm-preview[hidden]{display:none}',
+    '.pm-preview header{display:flex;gap:7px;align-items:center;padding:12px;flex-wrap:wrap}.pm-preview select{max-width:100%;padding:8px}.pm-shell{overflow:auto;padding:20px;flex:1;min-height:0}.pm-device{flex:0 0 auto}.pm-device iframe{border:0;transform-origin:top left}',
+    '.pm-panel-grip{position:absolute;left:0;top:0;bottom:0;width:5px;cursor:col-resize}.pm-dual{padding-right:calc(var(--pm-panel,480px) + 28px)}',
+    '@media(max-width:850px){.pm-preview{width:92vw}.pm-dual{padding-right:28px}.pm-toolbar{z-index:25}}',
+    '@media print{[data-pm-ui]{display:none!important}body.pm-dual{padding:0}}'
+  ].join('\n');
+  document.querySelectorAll(ui).forEach(e => e.remove());
+  document.head.append(styles);
+  const content = document.getElementById('prdContent');
+  if (!content) return;
+
+  function notify(text) {
+    const n = document.querySelector('.pm-status');
+    n.textContent = text; n.classList.add('show');
+  }
+  function clean(root) {
+    root.querySelectorAll(ui).forEach(e => e.remove());
+    root.querySelectorAll('[contenteditable]').forEach(e => e.removeAttribute('contenteditable'));
+    return root;
+  }
+  function matrix(section) {
+    // Build logical columns so rowspan/colspan mutations keep cells aligned.
+    const rows = Array.from(section.rows), grid = [];
+    rows.forEach((row, r) => {
+      grid[r] = grid[r] || [];
+      let c = 0;
+      Array.from(row.cells).forEach(cell => {
+        while (grid[r][c]) c++;
+        const rs = cell.rowSpan || (rows.length-r);
+        for (let y=r; y<r+rs; y++) {
+          grid[y] = grid[y] || [];
+          for (let x=c; x<c+cell.colSpan; x++) grid[y][x] = {cell, r, c};
+        }
+        c += cell.colSpan;
+      });
+    });
+    return {rows, grid};
+  }
+  function changeRow(row, remove) {
+    const section = row.parentElement, {rows, grid} = matrix(section);
+    const index = rows.indexOf(row);
+    if (remove && rows.length <= 1) return;
+    const seen = new Set();
+    if (remove) {
+      (grid[index] || []).forEach(entry => {
+        if (!entry || seen.has(entry.cell)) return;
+        const cell = entry.cell; seen.add(cell);
+        if (entry.r < index) cell.rowSpan = Math.max(1, cell.rowSpan - 1);
+        else if (cell.rowSpan > 1 && rows[index+1]) {
+          cell.rowSpan -= 1;
+          const nextEntries = grid[index+1] || [];
+          const following = Array.from(rows[index+1].cells).find(c =>
+            nextEntries.findIndex(e => e && e.cell === c) > entry.c);
+          rows[index+1].insertBefore(cell, following || null);
+        }
+      });
+      row.remove();
+    } else {
+      const created = document.createElement('tr'), insert = index + 1;
+      (grid[index] || []).forEach(entry => {
+        if (!entry || seen.has(entry.cell)) return;
+        const cell = entry.cell; seen.add(cell);
+        if (entry.r + cell.rowSpan > insert || cell.rowSpan === 0) {
+          if (cell.rowSpan !== 0) cell.rowSpan += 1;
+        } else {
+          const blank = document.createElement(cell.tagName);
+          blank.colSpan = cell.colSpan;
+          blank.innerHTML = '<br>';
+          created.append(blank);
+        }
+      });
+      row.after(created);
+    }
+    initEditing();
+  }
+  function initEditing() {
+    content.querySelectorAll(ui).forEach(e => e.remove());
+    content.querySelectorAll('table:not(.no-edit)').forEach(table => {
+      const first = table.rows[0];
+      if (!first) return;
+      if (!table.querySelector(':scope > colgroup')) {
+        const group = document.createElement('colgroup');
+        let count = Array.from(first.cells).reduce((n,c) => n + c.colSpan, 0);
+        while (count--) group.append(document.createElement('col'));
+        table.prepend(group);
+      }
+      let colIndex = 0;
+      Array.from(first.cells).forEach(cell => {
+        const grip = document.createElement('span');
+        grip.className = 'pm-col'; grip.dataset.pmUi = 'column'; grip.dataset.index = colIndex;
+        cell.append(grip); colIndex += cell.colSpan;
+      });
+      Array.from(table.tBodies).forEach(section => Array.from(section.rows).forEach(row => {
+        if (Array.from(row.cells).every(c => c.tagName === 'TH') || !row.cells[0]) return;
+        const controls = document.createElement('span');
+        controls.className = 'pm-controls'; controls.dataset.pmUi = 'rows'; controls.contentEditable = 'false';
+        controls.innerHTML = '<button type="button" data-pm-action="add-row" aria-label="下方插入一行">＋</button><button type="button" data-pm-action="delete-row" aria-label="删除本行">−</button>';
+        row.cells[0].append(controls);
+        const grip = document.createElement('span'); grip.className='pm-row'; grip.dataset.pmUi='row';
+        row.cells[0].append(grip);
+      }));
+    });
+    content.querySelectorAll('td,th,p,li,h1,h2,h3,h4,blockquote,dd,dt').forEach(el => {
+      if (el.closest(ui + ',.no-edit') || el.querySelector('iframe,img,table,video,canvas,pre')) return;
+      el.contentEditable = 'true';
+      if (!originals.has(el)) originals.set(el, el.textContent);
+    });
+    scaleEmbeds();
+  }
+  function scaleEmbeds(width) {
+    content.querySelectorAll('.prototype-frame').forEach(outer => {
+      const iframe=outer.querySelector('iframe');if(!iframe)return;
+      const w=Number(outer.dataset.pw)||390,h=Number(outer.dataset.ph)||844;
+      if(width)outer.style.width=width+'px';
+      const visible=outer.clientWidth||320;
+      outer.style.position='relative';outer.style.height=Math.round(h*visible/w)+'px';outer.style.overflow='hidden';
+      iframe.style.cssText='position:absolute;left:0;top:0;border:0;transform-origin:top left;width:'+w+'px;height:'+h+'px;transform:scale('+visible/w+')';
+      if(!outer.querySelector('.pm-proto-grip')&&!window.PM_RUNTIME?.readOnly){
+        const grip=document.createElement('span');grip.dataset.pmUi='proto-size';grip.className='pm-proto-grip';grip.title='拖拽缩放原型';
+        grip.style.cssText='position:absolute;right:0;bottom:0;width:16px;height:16px;cursor:nwse-resize;background:#2c876d80';outer.append(grip);
+      }
+    });
+  }
+  document.addEventListener('focusout', e => {
+    if (originals.has(e.target) && originals.get(e.target) !== e.target.textContent) e.target.classList.add('pm-edited');
+  });
+  let catalog = [];
+  try { catalog = JSON.parse(document.getElementById('prdPages')?.textContent || '[]'); } catch (e) { notify(e.message); }
+  let current = catalog[0]?.value, zoom = null, lockUntil = 0;
+  const toolbar = document.createElement('div');
+  toolbar.className='pm-toolbar'; toolbar.dataset.pmUi='toolbar';
+  toolbar.innerHTML='<button data-pm-action="copy">一键复制全文</button><button data-pm-action="refresh-copy">重新生成图片并复制</button><button data-pm-action="preview">双栏预览</button><button data-pm-action="save">保存</button><button data-pm-action="download">下载副本</button>';
+  const status = document.createElement('div'); status.className='pm-status'; status.dataset.pmUi='status'; status.role='status';
+  document.body.append(toolbar,status);
+  const panel=document.createElement('aside'); panel.className='pm-preview'; panel.dataset.pmUi='preview';
+  panel.innerHTML='<div class="pm-panel-grip"></div><header><select aria-label="原型页面"></select><button data-pm-action="minus">－</button><span class="pm-zoom"></span><button data-pm-action="plus">＋</button><button data-pm-action="fit">适配</button><button data-pm-action="preview">关闭</button></header><div class="pm-shell"><div class="pm-device"><iframe title="交互原型预览"></iframe></div></div>';
+  document.body.append(panel);
+  const select=panel.querySelector('select'), frame=panel.querySelector('iframe'), wrap=panel.querySelector('.pm-device');
+  catalog.forEach(item => {const o=document.createElement('option'); o.value=item.value;o.textContent=item.label;select.append(o);});
+  function scale() {
+    const item=catalog.find(c=>c.value===current);
+    if (!item) return;
+    const factor=zoom===null ? Math.max(100,panel.querySelector('.pm-shell').clientWidth-40)/item.w : zoom;
+    frame.style.width=item.w+'px'; frame.style.height=item.h+'px'; frame.style.transform='scale('+factor+')';
+    wrap.style.width=item.w*factor+'px';wrap.style.height=item.h*factor+'px';
+    panel.querySelector('.pm-zoom').textContent=Math.round(factor*100)+'%';
+  }
+  function showPage(value) {
+    const item=catalog.find(c=>c.value===value);
+    if (!item) return;
+    current=value; select.value=value; frame.src=item.url; requestAnimationFrame(scale);
+  }
+  function togglePreview() {panel.hidden=!panel.hidden;document.body.classList.toggle('pm-dual',!panel.hidden);requestAnimationFrame(()=>{scale();scaleEmbeds();});}
+  select.addEventListener('change',()=>{lockUntil=Date.now()+4000;showPage(select.value);});
+  addEventListener('resize',()=>{scale();scaleEmbeds();});
+  addEventListener('message',e=>{
+    if(e.source!==frame.contentWindow||e.data?.type!=='page-changed')return;
+    if(catalog.some(c=>c.value===e.data.page)){current=e.data.page;select.value=current;lockUntil=Date.now()+4000;scale();}
+  });
+  addEventListener('scroll',()=>{
+    if(panel.hidden||Date.now()<lockUntil)return;
+    let node;
+    content.querySelectorAll('[data-preview]').forEach(n=>{if(n.getBoundingClientRect().top<=innerHeight*.35)node=n;});
+    if(node && node.dataset.preview!==current) showPage(node.dataset.preview);
+  },{passive:true});
+  document.addEventListener('pointerdown',e=>{
+    const grip=e.target.closest('.pm-col,.pm-row,.pm-panel-grip,.pm-proto-grip');
+    if(!grip)return;e.preventDefault();
+    const x=e.clientX,y=e.clientY, cell=grip.closest('th,td');
+    const table=cell?.closest('table'),row=cell?.parentElement;
+    const width=cell?.getBoundingClientRect().width,height=row?.getBoundingClientRect().height,panelWidth=panel.offsetWidth;
+    const protoWidth=grip.closest('.prototype-frame')?.clientWidth;
+    function move(ev){
+      if(grip.classList.contains('pm-proto-grip')){
+        scaleEmbeds(Math.max(160,Math.min(1200,protoWidth+ev.clientX-x)));
+      }else if(grip.classList.contains('pm-col')){
+        const col=table.querySelectorAll('colgroup col')[Number(grip.dataset.index)];
+        if(col)col.style.width=Math.max(48,width+ev.clientX-x)+'px';scaleEmbeds();
+      }else if(grip.classList.contains('pm-row'))row.style.height=Math.max(24,height+ev.clientY-y)+'px';
+      else {document.body.style.setProperty('--pm-panel',Math.max(320,Math.min(innerWidth-200,panelWidth+x-ev.clientX))+'px');scale();scaleEmbeds();}
+    }
+    function up(){document.removeEventListener('pointermove',move);document.removeEventListener('pointerup',up);}
+    document.addEventListener('pointermove',move);document.addEventListener('pointerup',up);
+  });
+  async function writeClipboard(html,text) {
+    try {
+      if(!navigator.clipboard||!window.ClipboardItem)throw Error('fallback');
+      await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([text],{type:'text/plain'})})]);
+    }catch(e){
+      const el=document.createElement('div');el.contentEditable='true';el.style.cssText='position:fixed;left:-99999px';el.innerHTML=html;document.body.append(el);
+      const range=document.createRange();range.selectNodeContents(el);const selection=getSelection();selection.removeAllRanges();selection.addRange(range);
+      const ok=document.execCommand('copy');selection.removeAllRanges();el.remove();if(!ok)throw Error('浏览器拒绝复制');
+    }
+  }
+  async function shrink(data) {
+    return new Promise(resolve=>{
+      const im=new Image(); im.onload=()=>{
+        if(im.width<=2000){resolve(data);return;}
+        try{const c=document.createElement('canvas');c.width=2000;c.height=Math.round(im.height*2000/im.width);const ctx=c.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,c.width,c.height);ctx.drawImage(im,0,0,c.width,c.height);resolve(c.toDataURL('image/jpeg',.9));}catch(e){resolve(data);}
+      };im.onerror=()=>resolve(data);im.src=data;
+    });
+  }
+  let copying=false;
+  async function copyAll(force) {
+    if(copying)return;copying=true;
+    try {
+      const clone=clean(content.cloneNode(true));
+      const live=content.querySelectorAll('img,iframe'), images=clone.querySelectorAll('img,iframe');
+      live.forEach((n,i)=>{if(images[i]){images[i].style.width=Math.round(n.getBoundingClientRect().width)+'px';images[i].style.maxWidth='100%';}});
+      const cache=new Map();let ok=0,failed=0;
+      for(const el of Array.from(images)){
+        const src=el.getAttribute('src');if(!src)continue;
+        if(src.startsWith('data:')){ok++;continue;}
+        notify('正在处理图片 '+(ok+failed+1)+'/'+images.length);
+        try{
+          const key=el.tagName+src;
+          if(!cache.has(key)){
+            const data=el.tagName==='IFRAME'?await window.snapshotPrototypeViaServer(src,{force}):await window.inlineAssetViaServer(src,{});
+            cache.set(key,await shrink(data.dataUrl));
+          }
+          const im=document.createElement('img');im.src=cache.get(key);im.alt=el.getAttribute('title')||el.getAttribute('alt')||'原型图';
+          im.style.cssText=el.style.cssText+';height:auto;transform:none;position:static';
+          const outer=el.closest('.prototype-frame');
+          if(outer){outer.style.cssText='height:auto;overflow:visible';}
+          el.replaceWith(im);ok++;
+        }catch(e){
+          const fallback=document.createElement('p');fallback.textContent='[图片未复制：'+(el.title||el.alt||src)+']';el.replaceWith(fallback);failed++;
+        }
+      }
+      clone.querySelectorAll('.pm-edited').forEach(e=>e.classList.remove('pm-edited'));
+      clone.querySelectorAll('table').forEach(t=>t.style.cssText+=';border-collapse:collapse;width:100%');
+      clone.querySelectorAll('th,td').forEach(c=>c.style.cssText+=';border:1px solid #ccc;padding:8px;vertical-align:top');
+      clone.querySelectorAll('button,script').forEach(e=>e.remove());
+      await writeClipboard('<meta charset="utf-8">'+clone.innerHTML,clone.textContent);
+      notify('已复制，包含 '+ok+' 张图'+(failed?'，'+failed+' 张缺失，已标注位置':'。目标文档首次粘贴请确认图片显示正常'));
+      return {ok,failed};
+    }finally{copying=false;}
+  }
+  function serialize(){
+    const clone=clean(document.documentElement.cloneNode(true));
+    clone.querySelector('body').classList.remove('pm-dual');
+    return '<!doctype html>\n'+clone.outerHTML;
+  }
+  document.addEventListener('click',async e=>{
+    const button=e.target.closest('[data-pm-action]');if(!button)return;
+    e.preventDefault();
+    try{
+      const action=button.dataset.pmAction;
+      if(action==='add-row'||action==='delete-row')changeRow(button.closest('tr'),action==='delete-row');
+      if(action==='preview')togglePreview();
+      if(action==='fit'){zoom=null;scale();}
+      if(action==='plus'||action==='minus'){
+        const now=parseFloat(panel.querySelector('.pm-zoom').textContent)/100;
+        const steps=[.25,.5,.75,1,1.25,1.5,2,3];
+        zoom=(action==='plus'?steps.find(s=>s>now+.001):steps.reverse().find(s=>s<now-.001))||now;scale();
+      }
+      if(action==='copy'||action==='refresh-copy')await copyAll(action==='refresh-copy');
+      if(action==='save'){
+        button.disabled=true;
+        const result=await window.PMService.save(serialize());
+        notify('已保存并备份。请让 AI 读取文件以同步相关产物');
+        window.dispatchEvent(new CustomEvent('pm-saved',{detail:result}));
+      }
+      if(action==='download'){
+        const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([serialize()],{type:'text/html'}));a.download=decodeURIComponent(location.pathname.split('/').pop()||'PRD.html');a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+        notify('已下载副本，原文件未被覆盖');
+      }
+    }catch(error){notify(error.message);}finally{button.disabled=false;}
+  });
+  if(!window.PM_RUNTIME?.readOnly)initEditing();else scaleEmbeds();
+  panel.hidden=!catalog.length;
+  document.body.classList.toggle('pm-dual',!!catalog.length);
+  if(catalog.length)showPage(current);
+  requestAnimationFrame(()=>scaleEmbeds());
+  if(window.ResizeObserver)new ResizeObserver(()=>scaleEmbeds()).observe(content);
+  window.PMDocument={initEditing,serialize,copyAll,matrix};
+  if(window.PM_RUNTIME?.readOnly)notify('只读分享模式，可浏览或下载副本');
+  else window.PMService?.revision().catch(e=>notify('保存尚未就绪：'+e.message));
+})();
+</script>
+</body>
+</html>

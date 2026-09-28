@@ -1,0 +1,22 @@
+/* 本地圆体随包加载，避免 iPad/Windows 系统字体造成视觉漂移；保留 OFL 授权文件。 */
+@font-face {
+  font-family: 'PetRound';
+  src: url('@/static/fonts/ChillRoundF-v3.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+:root, page {
+  --cream: #fffcf5;
+  --lavender: #f0eaff;
+  --purple: #9777ee;
+  --purple-deep: #6039bd;
+  --ink: #40282c;
+  --muted: #9382b5;
+  --line: #ddd5ff;
+  --mint: #e9f8ee;
+  --green: #26954b;
+  --amber: #fff5de;
+  --orange: #b97110;
+  --card-shadow: 0 9px 25px rgba(109, 83, 142, .065);
+}

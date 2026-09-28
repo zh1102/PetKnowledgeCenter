@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>宠物学堂 儿童端 - 今天的任务</title>
+<!-- Load Tailwind CSS v3 with forms & container queries plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: ZCOOL KuaiLe for fun titles & Noto Sans SC for crisp interface -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&amp;family=ZCOOL+KuaiLe&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#8C67F6',
+              purpleLight: '#F2EDFE',
+              purpleHover: '#7953E8',
+              sidebar: '#F3EFFE',
+              catDark: '#3A2E5B',
+              bgMain: '#FBF9FF',
+              textPrimary: '#2B2544',
+              textSecondary: '#6C6584',
+              greenBadge: '#38C172',
+              greenBadgeBg: '#E9F9F0',
+              amberBadge: '#F59E0B',
+              amberBadgeBg: '#FEF6E7',
+              starYellow: '#FDC732'
+            }
+          },
+          fontFamily: {
+            sans: ['"Noto Sans SC"', 'sans-serif'],
+            kuaile: ['"ZCOOL KuaiLe"', 'cursive', 'sans-serif'],
+          },
+          boxShadow: {
+            card: '0 8px 24px -4px rgba(140, 103, 246, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04)',
+            soft: '0 4px 16px rgba(0, 0, 0, 0.03)',
+            sticky: '2px 4px 12px rgba(230, 200, 150, 0.25)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom App Styles -->
+<style data-purpose="custom-layout">
+    body {
+      background-color: #ECE8F6;
+      font-family: 'Noto Sans SC', sans-serif;
+    }
+    .tablet-screen {
+      width: 1448px;
+      height: 1086px;
+      overflow: hidden;
+    }
+    .text-tilt-note {
+      transform: rotate(-3deg);
+    }
+    .curved-handwriting {
+      font-family: 'ZCOOL KuaiLe', cursive, sans-serif;
+      transform: rotate(-12deg);
+    }
+  </style>
+<!-- END: Custom App Styles -->
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+<!-- BEGIN: Main Tablet Container (1448x1086 exact iPad Canvas) -->
+<main class="tablet-screen relative bg-[#FAF8FE] rounded-[36px] shadow-2xl flex flex-row border-[8px] border-white/60 select-none">
+<!-- BEGIN: Sidebar Navigation -->
+<aside class="w-[250px] bg-[#F3EFFE] flex flex-col justify-between py-8 px-5 border-r border-[#E9E2FD] relative z-10 shrink-0">
+<!-- Top Navigation & Brand Header -->
+<div class="flex flex-col space-y-7">
+<!-- Logo Section -->
+<header class="flex items-center space-x-3 px-3">
+<!-- Logo Icon: Cute Purple Cat Face -->
+<div class="w-12 h-12 bg-[#8C67F6] rounded-2xl flex items-center justify-center shadow-md relative overflow-hidden">
+<svg class="w-9 h-9 text-white" fill="none" stroke="currentColor" viewbox="0 0 48 48">
+<!-- Kitten Silhouette -->
+<path d="M10 38C10 24 14 18 17 12L23 18C25 18 27 18 29 18L35 12C38 18 42 24 42 38C42 41 39 42 26 42C13 42 10 41 10 38Z" fill="white" stroke="none"></path>
+<!-- Cat inner ears & eyes (purple cuts) -->
+<circle cx="21" cy="28" fill="#8C67F6" r="2.5"></circle>
+<circle cx="31" cy="28" fill="#8C67F6" r="2.5"></circle>
+<ellipse cx="26" cy="32" fill="#8C67F6" rx="1.5" ry="1"></ellipse>
+<path d="M19 19L21 21M33 19L31 21" stroke="#F6A8B8" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+</div>
+<div>
+<h1 class="text-xl font-black text-[#30264E] tracking-tight leading-tight">宠物学堂</h1>
+<span class="text-xs font-bold text-[#8C67F6] tracking-wider block">儿童端</span>
+</div>
+</header>
+<!-- Navigation Items List -->
+<nav aria-label="侧边栏主导航" class="flex flex-col space-y-2 font-bold">
+<!-- Item 1: 今日任务 (Active Pill State) -->
+<a class="flex items-center space-x-3.5 px-4 py-3.5 rounded-2xl bg-[#8C67F6] text-white shadow-lg shadow-[#8C67F6]/30 transition-all" href="#">
+<svg class="w-6 h-6 shrink-0" fill="currentColor" viewbox="0 0 24 24">
+<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+</svg>
+<span class="text-[17px] tracking-wide">今日任务</span>
+</a>
+<!-- Item 2: 语文 -->
+<a class="flex items-center space-x-3.5 px-4 py-3.5 rounded-2xl text-[#6D638D] hover:bg-[#E9E2FD]/60 hover:text-[#3B2D62] transition-colors" href="#">
+<svg class="w-6 h-6 shrink-0 text-[#8C67F6]" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[17px] tracking-wide">语文</span>
+</a>
+<!-- Item 3: 数感 -->
+<a class="flex items-center space-x-3.5 px-4 py-3.5 rounded-2xl text-[#6D638D] hover:bg-[#E9E2FD]/60 hover:text-[#3B2D62] transition-colors" href="#">
+<svg class="w-6 h-6 shrink-0 text-[#8C67F6]" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<rect height="18" rx="3" stroke-linecap="round" stroke-linejoin="round" width="16" x="4" y="3"></rect>
+<line stroke-linecap="round" x1="8" x2="16" y1="7" y2="7"></line>
+<circle cx="8.5" cy="12" fill="currentColor" r="1"></circle>
+<circle cx="15.5" cy="12" fill="currentColor" r="1"></circle>
+<circle cx="8.5" cy="16" fill="currentColor" r="1"></circle>
+<circle cx="15.5" cy="16" fill="currentColor" r="1"></circle>
+</svg>
+<span class="text-[17px] tracking-wide">数感</span>
+</a>
+<!-- Item 4: 英语 -->
+<a class="flex items-center space-x-3.5 px-4 py-3.5 rounded-2xl text-[#6D638D] hover:bg-[#E9E2FD]/60 hover:text-[#3B2D62] transition-colors" href="#">
+<span class="w-6 h-6 flex items-center justify-center font-black text-xl text-[#8C67F6]">Aa</span>
+<span class="text-[17px] tracking-wide">英语</span>
+</a>
+<!-- Item 5: 成长中心 -->
+<a class="flex items-center space-x-3.5 px-4 py-3.5 rounded-2xl text-[#6D638D] hover:bg-[#E9E2FD]/60 hover:text-[#3B2D62] transition-colors" href="#">
+<svg class="w-6 h-6 shrink-0 text-[#38C172]" fill="none" stroke="currentColor" stroke-width="2.3" viewbox="0 0 24 24">
+<path d="M12 21V11m0 0a4 4 0 014-4h2a4 4 0 01-4 4zm0 0a4 4 0 00-4-4H6a4 4 0 004 4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[17px] tracking-wide">成长中心</span>
+</a>
+<div class="py-2 border-t border-[#E5DEFA]/80 my-1"></div>
+<!-- Item 6: 我的星星 -->
+<a class="flex items-center space-x-3.5 px-4 py-3 text-[#6D638D] hover:bg-[#E9E2FD]/60 transition-colors" href="#">
+<svg class="w-6 h-6 shrink-0 text-[#FDC732]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+</svg>
+<span class="text-[17px] tracking-wide">我的星星</span>
+</a>
+<!-- Item 7: 设置 -->
+<a class="flex items-center space-x-3.5 px-4 py-3 text-[#6D638D] hover:bg-[#E9E2FD]/60 transition-colors" href="#">
+<svg class="w-6 h-6 shrink-0 text-[#8C67F6]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"></path>
+</svg>
+<span class="text-[17px] tracking-wide">设置</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Decorative Hill & Paw Print Badge -->
+<footer aria-label="激励格言" class="relative pb-2">
+<!-- Cute hand-drawn encouragement text with paw prints -->
+<div class="curved-handwriting relative z-10 px-2 py-1 flex items-center space-x-1.5 text-[#8878B3]">
+<span class="text-[17px] leading-tight font-bold">好习惯<br/>  让我变更棒！</span>
+<!-- Paw print SVG -->
+<svg class="w-6 h-6 text-[#9A87C8]/70 inline-block shrink-0" fill="currentColor" viewbox="0 0 24 24">
+<ellipse cx="12" cy="16" rx="4" ry="3"></ellipse>
+<circle cx="7" cy="11" r="1.8"></circle>
+<circle cx="11" cy="8" r="1.8"></circle>
+<circle cx="15" cy="8" r="1.8"></circle>
+<circle cx="18" cy="11" r="1.8"></circle>
+</svg>
+</div>
+<!-- Green decorative hill at bottom corner -->
+<div class="absolute -bottom-8 -left-5 w-[260px] h-24 overflow-hidden pointer-events-none">
+<svg class="w-full h-full" fill="none" viewbox="0 0 260 100">
+<path d="M-20 100 C 40 40, 140 30, 260 100 Z" fill="#C8E6C9" fill-opacity="0.5"></path>
+<path d="M20 100 C 90 60, 180 50, 280 100 Z" fill="#A5D6A7" fill-opacity="0.6"></path>
+<!-- Tiny plant bud -->
+<circle cx="48" cy="65" fill="#81C784" r="9"></circle>
+<path d="M48 65 C 45 50, 36 45, 36 45 C 36 45, 52 46, 48 65 Z" fill="#66BB6A"></path>
+</svg>
+</div>
+</footer>
+</aside>
+<!-- END: Sidebar Navigation -->
+<!-- BEGIN: Main Dashboard Content Area -->
+<section class="flex-1 flex flex-col px-12 py-8 overflow-y-auto relative bg-[#FAF9FF]" data-purpose="dashboard-main">
+<!-- BEGIN: Top Bar Section -->
+<header class="flex justify-between items-start mb-6">
+<!-- Left: Page Title and Subtitle -->
+<div class="flex items-start space-x-4">
+<!-- Big Cute Purple Clipboard Icon -->
+<div class="w-16 h-16 bg-[#F1ECFE] border-[3px] border-[#8C67F6] rounded-2xl flex flex-col items-center justify-center shadow-md shrink-0 relative mt-1">
+<!-- Clip top -->
+<div class="w-7 h-2.5 bg-[#8C67F6] rounded-t-sm absolute -top-1"></div>
+<!-- Lines & Check inside icon -->
+<div class="w-9 space-y-1.5 mt-2">
+<div class="h-1.5 w-full bg-[#8C67F6] rounded-full"></div>
+<div class="h-1.5 w-3/4 bg-[#8C67F6] rounded-full"></div>
+<div class="h-1.5 w-4/5 bg-[#8C67F6]/60 rounded-full"></div>
+</div>
+</div>
+<div>
+<h2 class="text-4xl font-extrabold text-[#281F3D] tracking-tight mb-2">今天的任务</h2>
+<p class="text-lg text-[#554C73] font-medium">完成五项任务，一次领取今日星星礼包。</p>
+</div>
+</div>
+<!-- Right: Profile Pill & Sticky Note -->
+<div class="flex items-start space-x-8">
+<!-- Sticky Note: 坚持每一天 遇见更好的自己！ -->
+<div class="text-tilt-note relative bg-[#FFFBEA] border border-[#F6ECC2] rounded-xl px-5 py-3 shadow-sticky max-w-[210px]">
+<!-- Gold star pin on corner -->
+<div class="absolute -top-3 -right-2 text-[#FDC732]">
+<svg class="w-8 h-8 filter drop-shadow-sm" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 2l2.9 6.26 6.9.74-5.1 4.7 1.4 6.8-6.1-3.46-6.1 3.46 1.4-6.8-5.1-4.7 6.9-.74z"></path>
+</svg>
+</div>
+<p class="curved-handwriting text-[#53462A] text-lg font-bold leading-relaxed pt-1">
+              坚持每一天<br/>遇见更好的自己！
+            </p>
+<!-- Tiny cute sprout decoration -->
+<div class="flex justify-end -mt-1 -mr-1">
+<svg class="w-6 h-6 text-[#78B97C]" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12 21V12m0 0c0-3.3 2.7-6 6-6 0 3.3-2.7 6-6 6zm0 0c0-3.3-2.7-6-6-6 0 3.3 2.7 6 6 6z"></path>
+</svg>
+</div>
+</div>
+<!-- Child Profile Pill -->
+<div class="flex items-center space-x-3 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-soft border border-[#EDE7FD]">
+<!-- Avatar: Cute Kitty -->
+<div class="w-11 h-11 rounded-full bg-[#EDE7FD] flex items-center justify-center overflow-hidden border-2 border-white shadow-sm">
+<svg class="w-9 h-9" fill="none" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="#F8EAF5" r="16"></circle>
+<!-- Kitten Face in profile avatar -->
+<ellipse cx="18" cy="21" fill="white" rx="10" ry="8"></ellipse>
+<polygon fill="#F49EB4" points="10,14 13,8 17,14"></polygon>
+<polygon fill="#F49EB4" points="26,14 23,8 19,14"></polygon>
+<circle cx="15" cy="20" fill="#3D305A" r="1.5"></circle>
+<circle cx="21" cy="20" fill="#3D305A" r="1.5"></circle>
+<circle cx="18" cy="22" fill="#F58DA4" r="1"></circle>
+</svg>
+</div>
+<div>
+<div class="text-[17px] font-bold text-[#2C2149] leading-tight">小米</div>
+<div class="text-xs font-semibold text-[#8B83A8]">一年级</div>
+</div>
+<!-- Chevron icon -->
+<svg class="w-5 h-5 text-[#9C94BA]" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</div>
+</header>
+<!-- END: Top Bar Section -->
+<!-- BEGIN: Two Column Main Dashboard Grid -->
+<div class="grid grid-cols-12 gap-8 items-start">
+<!-- LEFT COLUMN: Progress & Mascot Card -->
+<div class="col-span-5 bg-white rounded-3xl p-7 shadow-card border border-[#EBE3FF] flex flex-col justify-between h-[660px]">
+<!-- Top Section: Progress Title & Visual Bar -->
+<div>
+<div class="flex items-center space-x-3 mb-4">
+<!-- Target bullseye icon -->
+<div class="w-9 h-9 rounded-full bg-[#EFE9FD] flex items-center justify-center text-[#8C67F6]">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<circle cx="12" cy="12" r="6"></circle>
+<circle cx="12" cy="12" fill="currentColor" r="2"></circle>
+</svg>
+</div>
+<h3 class="text-2xl font-black text-[#261E3E] tracking-tight">今日进度</h3>
+<span class="text-3xl font-black text-[#8C67F6]">3</span>
+<span class="text-2xl font-bold text-[#261E3E]">/ 5</span>
+</div>
+<!-- Purple Rounded Progress Bar: 3/5 = 60% -->
+<div class="w-full h-4 bg-[#EBE4FE] rounded-full overflow-hidden p-0.5">
+<div class="h-full bg-[#8C67F6] rounded-full" style="width: 60%;"></div>
+</div>
+</div>
+<!-- Mascot Kitten Illustration Centerpiece -->
+<div class="relative flex flex-col items-center justify-center my-auto py-2">
+<!-- Speech Bubble from Kitten -->
+<div class="absolute -top-3 right-6 bg-white px-4 py-2 rounded-2xl rounded-bl-none shadow-md border border-[#E9E1FC] max-w-[190px]">
+<p class="curved-handwriting text-sm font-black text-[#4E416F] tracking-wide leading-snug">
+                加油！<br/>你已经完成3项啦！
+              </p>
+<span class="absolute -top-1 -right-1 text-red-400">❤️</span>
+</div>
+<!-- Cute Mascot Illustration (SVG Pure Vector Recreation) -->
+<div class="w-full max-w-[340px] h-[260px] relative flex items-center justify-center">
+<svg class="w-full h-full" fill="none" viewbox="0 0 340 260">
+<defs>
+<lineargradient id="book1" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#FCE1A8"></stop>
+<stop offset="100%" stop-color="#F9D187"></stop>
+</lineargradient>
+<lineargradient id="book2" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#C2EBFF"></stop>
+<stop offset="100%" stop-color="#9AD7F8"></stop>
+</lineargradient>
+<lineargradient id="book3" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#7FD1E8"></stop>
+<stop offset="100%" stop-color="#58BAD5"></stop>
+</lineargradient>
+</defs>
+<!-- Soft Glow Behind Kitten -->
+<ellipse cx="170" cy="150" fill="#F7F3FF" rx="110" ry="70"></ellipse>
+<!-- Cheering lines -->
+<path d="M90 100 L75 92" stroke="#FDC732" stroke-linecap="round" stroke-width="3"></path>
+<path d="M100 80 L92 68" stroke="#FDC732" stroke-linecap="round" stroke-width="3"></path>
+<path d="M115 65 L115 50" stroke="#FDC732" stroke-linecap="round" stroke-width="3"></path>
+<path d="M225 65 L228 50" stroke="#FDC732" stroke-linecap="round" stroke-width="3"></path>
+<path d="M245 80 L255 70" stroke="#FDC732" stroke-linecap="round" stroke-width="3"></path>
+<!-- Stack of 3 Cute Books on the Left -->
+<!-- Book 3 (Bottom): 天天进步 -->
+<rect fill="url(#book3)" height="24" rx="5" stroke="#4AA2BC" stroke-width="2" width="130" x="25" y="195"></rect>
+<text fill="#135E74" font-family="'Noto Sans SC'" font-size="12" font-weight="bold" x="50" y="212">天天进步</text>
+<rect fill="#D3F1FA" height="15" rx="3" width="8" x="20" y="200"></rect>
+<!-- Book 2 (Middle): 快乐学习 -->
+<rect fill="url(#book2)" height="24" rx="5" stroke="#74BFE5" stroke-width="2" width="125" x="28" y="168"></rect>
+<text fill="#20698F" font-family="'Noto Sans SC'" font-size="12" font-weight="bold" x="52" y="185">快乐学习</text>
+<rect fill="#E8F7FE" height="15" rx="2" width="7" x="24" y="173"></rect>
+<!-- Book 1 (Top): 好习惯 -->
+<rect fill="url(#book1)" height="24" rx="5" stroke="#E4B35F" stroke-width="2" width="120" x="32" y="142"></rect>
+<text fill="#845709" font-family="'Noto Sans SC'" font-size="12" font-weight="bold" x="55" y="159">好习惯</text>
+<circle cx="112" cy="154" fill="#F49090" r="3.5"></circle>
+<!-- Pen Holder Cup with Pens (Right) -->
+<rect fill="#89D9BE" height="48" rx="8" stroke="#5FBFA1" stroke-width="2" width="42" x="255" y="175"></rect>
+<ellipse cx="276" cy="195" fill="#A8EDD6" rx="7" ry="6"></ellipse>
+<!-- Pencil 1 (Purple) -->
+<polygon fill="#8C67F6" points="262,175 264,135 269,135 271,175"></polygon>
+<polygon fill="#FDE2B5" points="264,135 266.5,125 269,135"></polygon>
+<!-- Pencil 2 (Blue) -->
+<polygon fill="#4B9FE1" points="274,175 277,140 282,140 284,175"></polygon>
+<polygon fill="#FDE2B5" points="277,140 279.5,130 282,140"></polygon>
+<!-- Ruler / Pen (Green) -->
+<rect fill="#71D57F" height="30" rx="1" width="5" x="285" y="145"></rect>
+<!-- Cute White Mascot Cat -->
+<!-- Body & Tail -->
+<path d="M190 220 C160 220 150 170 170 145 C190 120 235 130 230 185 C228 215 210 220 190 220Z" fill="white" stroke="#3D2F54" stroke-width="3"></path>
+<!-- Tail curled up -->
+<path d="M225 180 C250 170 255 135 240 120 C235 115 228 122 232 128 C242 140 238 160 220 170" fill="#CBB6F7" stroke="#3D2F54" stroke-width="2.5"></path>
+<!-- Back Paws -->
+<ellipse cx="205" cy="216" fill="white" rx="16" ry="11" stroke="#3D2F54" stroke-width="2.5"></ellipse>
+<ellipse cx="160" cy="216" fill="white" rx="16" ry="11" stroke="#3D2F54" stroke-width="2.5"></ellipse>
+<ellipse cx="130" cy="215" fill="white" rx="14" ry="9" stroke="#3D2F54" stroke-width="2.5"></ellipse>
+<path d="M155 218 L155 223 M163 218 L163 223 M200 218 L200 223 M208 218 L208 223" stroke="#3D2F54" stroke-width="2"></path>
+<!-- Cat Head -->
+<ellipse cx="180" cy="125" fill="white" rx="46" ry="40" stroke="#3D2F54" stroke-width="3"></ellipse>
+<!-- Ears with purple & pink accents -->
+<path d="M142 105 C135 75 152 65 160 78 C163 85 162 95 162 102" fill="white" stroke="#3D2F54" stroke-width="3"></path>
+<path d="M148 98 C144 82 153 77 157 85" fill="#E8B5C7"></path>
+<path d="M218 105 C225 75 208 65 200 78 C197 85 198 95 198 102" fill="white" stroke="#3D2F54" stroke-width="3"></path>
+<path d="M212 98 C216 82 207 77 203 85" fill="#E8B5C7"></path>
+<!-- Purple stripes on head -->
+<path d="M174 86 C176 94 184 94 186 86" stroke="#9E87D8" stroke-linecap="round" stroke-width="3.5"></path>
+<path d="M168 93 C170 98 174 98 176 93" stroke="#9E87D8" stroke-linecap="round" stroke-width="3"></path>
+<path d="M184 93 C186 98 190 98 192 93" stroke="#9E87D8" stroke-linecap="round" stroke-width="3"></path>
+<!-- Face: Big anime sparkling eyes -->
+<ellipse cx="164" cy="126" fill="#2E2345" rx="6.5" ry="9"></ellipse>
+<circle cx="162" cy="123" fill="white" r="3"></circle>
+<circle cx="166" cy="130" fill="white" r="1.5"></circle>
+<ellipse cx="196" cy="126" fill="#2E2345" rx="6.5" ry="9"></ellipse>
+<circle cx="194" cy="123" fill="white" r="3"></circle>
+<circle cx="198" cy="130" fill="white" r="1.5"></circle>
+<!-- Nose and cute open smiling mouth -->
+<path d="M177 131 L183 131 L180 134 Z" fill="#F48CA4"></path>
+<path d="M174 135 C177 137 180 137 180 135 C180 137 183 137 186 135" stroke="#3D2F54" stroke-linecap="round" stroke-width="2"></path>
+<path d="M177 137 C177 142 183 142 183 137 Z" fill="#F5768D"></path>
+<!-- Pink Cheek blush -->
+<ellipse cx="149" cy="135" fill="#FFAEC0" fill-opacity="0.6" rx="6" ry="4"></ellipse>
+<ellipse cx="211" cy="135" fill="#FFAEC0" fill-opacity="0.6" rx="6" ry="4"></ellipse>
+<!-- Cat Collar with Golden Star Charm -->
+<path d="M162 155 C175 162 188 162 198 155" stroke="#F5C042" stroke-linecap="round" stroke-width="5"></path>
+<polygon fill="#FFC72C" points="180,157 182,163 188,163 183,167 185,173 180,169 175,173 177,167 172,163 178,163"></polygon>
+<!-- Waving Front Left Paw -->
+<ellipse cx="134" cy="144" fill="white" rx="9" ry="11" stroke="#3D2F54" stroke-width="2.5" transform="rotate(-20 134 144)"></ellipse>
+<circle cx="132" cy="142" fill="#F9A4B7" r="3"></circle>
+<circle cx="127" cy="143" fill="#F9A4B7" r="1.5"></circle>
+<circle cx="137" cy="141" fill="#F9A4B7" r="1.5"></circle>
+<circle cx="132" cy="137" fill="#F9A4B7" r="1.5"></circle>
+</svg>
+</div>
+</div>
+<!-- Bottom Quote Box -->
+<div class="bg-[#F6F2FE] rounded-2xl p-4 text-center border border-[#ECE2FD] mt-2">
+<p class="text-[17px] font-bold text-[#352A56] leading-relaxed tracking-wide">
+              坚持就是最棒的！<br/>
+              一点一滴的努力，都会让你变得更好！
+            </p>
+</div>
+</div>
+<!-- RIGHT COLUMN: Task List & Star Reward Card -->
+<div class="col-span-7 flex flex-col space-y-4">
+<!-- Task 1: 阅读打卡 (已完成) -->
+<div class="bg-white rounded-2xl px-6 py-4 flex items-center justify-between shadow-soft border border-[#EDE7FD] hover:shadow-md transition-shadow">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 rounded-2xl bg-[#EFEAFE] flex items-center justify-center text-[#8C67F6]">
+<!-- Book icon -->
+<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.3" viewbox="0 0 24 24">
+<path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-xl font-bold text-[#2E244E] tracking-tight">阅读打卡</span>
+</div>
+<!-- Green completed badge -->
+<span class="inline-flex items-center space-x-1.5 px-4 py-1.5 rounded-full bg-[#E9F9F0] text-[#38C172] font-bold text-[16px]">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path>
+</svg>
+<span>已完成</span>
+</span>
+</div>
+<!-- Task 2: 英语打卡 (已完成) -->
+<div class="bg-white rounded-2xl px-6 py-4 flex items-center justify-between shadow-soft border border-[#EDE7FD] hover:shadow-md transition-shadow">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 rounded-2xl bg-[#EFEAFE] flex items-center justify-center text-[#8C67F6] font-black text-2xl">
+                Aa
+              </div>
+<span class="text-xl font-bold text-[#2E244E] tracking-tight">英语打卡</span>
+</div>
+<!-- Green completed badge -->
+<span class="inline-flex items-center space-x-1.5 px-4 py-1.5 rounded-full bg-[#E9F9F0] text-[#38C172] font-bold text-[16px]">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path>
+</svg>
+<span>已完成</span>
+</span>
+</div>
+<!-- Task 3: 三米打卡 (待家长确认) -->
+<div class="bg-white rounded-2xl px-6 py-4 flex items-center justify-between shadow-soft border border-[#EDE7FD] hover:shadow-md transition-shadow">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 rounded-2xl bg-[#EFEAFE] flex items-center justify-center text-[#8C67F6]">
+<!-- Clipboard check icon -->
+<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.3" viewbox="0 0 24 24">
+<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-xl font-bold text-[#2E244E] tracking-tight">三米打卡</span>
+</div>
+<!-- Amber Pending Badge -->
+<span class="inline-flex items-center space-x-1.5 px-4 py-1.5 rounded-full bg-[#FEF6E7] text-[#F59E0B] font-bold text-[16px]">
+<svg class="w-5 h-5 fill-none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+<span>待家长确认</span>
+</span>
+</div>
+<!-- Task 4: 数学天天练 (已完成) -->
+<div class="bg-white rounded-2xl px-6 py-4 flex items-center justify-between shadow-soft border border-[#EDE7FD] hover:shadow-md transition-shadow">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 rounded-2xl bg-[#EFEAFE] flex items-center justify-center text-[#8C67F6]">
+<!-- Calculator icon -->
+<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<rect height="18" rx="3" stroke-linecap="round" width="16" x="4" y="3"></rect>
+<line stroke-linecap="round" x1="8" x2="16" y1="7" y2="7"></line>
+<circle cx="8" cy="12" fill="currentColor" r="1"></circle>
+<circle cx="16" cy="12" fill="currentColor" r="1"></circle>
+<circle cx="8" cy="16" fill="currentColor" r="1"></circle>
+<circle cx="16" cy="16" fill="currentColor" r="1"></circle>
+</svg>
+</div>
+<span class="text-xl font-bold text-[#2E244E] tracking-tight">数学天天练</span>
+</div>
+<!-- Green completed badge -->
+<span class="inline-flex items-center space-x-1.5 px-4 py-1.5 rounded-full bg-[#E9F9F0] text-[#38C172] font-bold text-[16px]">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 20 20">
+<path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path>
+</svg>
+<span>已完成</span>
+</span>
+</div>
+<!-- Task 5: 讲数学题 (去完成 Action Button) -->
+<div class="bg-white rounded-2xl px-6 py-4 flex items-center justify-between shadow-soft border border-[#EDE7FD] hover:shadow-md transition-shadow">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 rounded-2xl bg-[#EFEAFE] flex items-center justify-center text-[#8C67F6]">
+<!-- Question mark bubble icon -->
+<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<circle cx="12" cy="12" fill="#8C67F6" r="10" stroke="none"></circle>
+<text fill="white" font-family="'Noto Sans SC'" font-size="14" font-weight="900" text-anchor="middle" x="12" y="16.5">?</text>
+</svg>
+</div>
+<span class="text-xl font-bold text-[#2E244E] tracking-tight">讲数学题</span>
+</div>
+<!-- Purple Action Button: 去完成 -->
+<button class="px-7 py-2.5 rounded-2xl bg-[#8C67F6] text-white font-bold text-lg hover:bg-[#7851EA] active:scale-95 transition-transform shadow-md shadow-[#8C67F6]/25">
+              去完成
+            </button>
+</div>
+<!-- Star Reward Box (Bottom Feature Card) -->
+<div class="bg-white rounded-3xl p-5 shadow-card border border-[#EBE3FF] flex flex-col justify-between mt-2">
+<div class="flex items-center justify-between">
+<!-- Gift Icon & Description -->
+<div class="flex items-center space-x-4">
+<!-- 3D Gift Box Graphic (SVG) -->
+<div class="relative w-16 h-16 flex items-center justify-center">
+<svg class="w-16 h-16 filter drop-shadow-sm" fill="none" viewbox="0 0 64 64">
+<!-- Purple Gift Box Body -->
+<rect fill="#755BE8" height="34" rx="6" width="48" x="8" y="24"></rect>
+<!-- Box Lid -->
+<rect fill="#8C67F6" height="10" rx="3" width="54" x="5" y="18"></rect>
+<!-- Golden Ribbons -->
+<rect fill="#FFC933" height="40" width="8" x="28" y="18"></rect>
+<rect fill="#FFC933" height="6" width="54" x="5" y="32"></rect>
+<!-- Big Bow Ribbon -->
+<path d="M26 18 C20 8 10 12 18 18 C25 22 28 19 32 18 Z" fill="#FFD34E"></path>
+<path d="M38 18 C44 8 54 12 46 18 C39 22 36 19 32 18 Z" fill="#FFD34E"></path>
+<circle cx="32" cy="18" fill="#E6A800" r="4"></circle>
+</svg>
+<!-- Star Badge popping in front of gift box -->
+<div class="absolute -bottom-1 -right-1 text-[#FDC732]">
+<svg class="w-8 h-8 filter drop-shadow-md" fill="currentColor" viewbox="0 0 24 24">
+<polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+</svg>
+</div>
+</div>
+<!-- Titles -->
+<div>
+<h4 class="text-2xl font-black text-[#2B2349] tracking-tight">今日星星礼包</h4>
+<p class="text-[15px] font-bold text-[#71688F] mt-0.5">五项完成后领取 20 颗星</p>
+</div>
+</div>
+<!-- Disabled Button: 还差 1 项 -->
+<button class="px-6 py-3 rounded-2xl bg-[#C7BDE0] text-white font-bold text-lg cursor-not-allowed shadow-sm" disabled="">
+                还差 1 项
+              </button>
+</div>
+<!-- Hint Footer Message -->
+<div class="text-center pt-3 mt-3 border-t border-[#F2EDFD]">
+<span class="text-sm font-bold text-[#7C749B]">加油！完成所有任务就能领取哦！</span>
+</div>
+</div>
+</div>
+<!-- END: Right Column -->
+</div>
+<!-- END: Two Column Grid -->
+</section>
+<!-- END: Main Dashboard Content Area -->
+</main>
+<!-- END: Main Tablet Container -->
+</body></html>

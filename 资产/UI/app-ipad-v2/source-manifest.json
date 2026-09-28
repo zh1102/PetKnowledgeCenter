@@ -1,0 +1,55 @@
+{
+  "source": "D:\\ZH\\宠物学堂\\资产\\UI\\child-today-ipad-landscape-simple-v4-official-pet.png",
+  "crops": {
+    "nav-today.png": [
+      40,
+      180,
+      49,
+      47
+    ],
+    "nav-chinese.png": [
+      40,
+      270,
+      49,
+      46
+    ],
+    "nav-math.png": [
+      40,
+      360,
+      49,
+      50
+    ],
+    "nav-english.png": [
+      40,
+      457,
+      49,
+      44
+    ],
+    "nav-growth.png": [
+      38,
+      552,
+      51,
+      50
+    ],
+    "nav-settings.png": [
+      39,
+      762,
+      49,
+      49
+    ],
+    "status-confirmed.png": [
+      1241,
+      309,
+      39,
+      38
+    ],
+    "status-submitted.png": [
+      1207,
+      498,
+      43,
+      43
+    ]
+  },
+  "operation": "edge-connected-light-background-mask",
+  "threshold": 209
+}

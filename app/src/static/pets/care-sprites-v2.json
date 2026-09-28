@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "frameWidth": 400,
+  "frameHeight": 400,
+  "frameCount": 10,
+  "frameDurationMs": 90,
+  "layout": "horizontal",
+  "sprites": [
+    {
+      "species": "cat",
+      "stage": "nursing",
+      "action": "touch",
+      "file": "cat-nursing-touch-sprite-v2.webp",
+      "base": "cat-nursing-v2.png",
+      "reaction": "cat-nursing-touch-frame-v1.png"
+    },
+    {
+      "species": "cat",
+      "stage": "nursing",
+      "action": "clean",
+      "file": "cat-nursing-clean-sprite-v2.webp",
+      "base": "cat-nursing-v2.png",
+      "reaction": "cat-nursing-clean-frame-v1.png"
+    },
+    {
+      "species": "cat",
+      "stage": "juvenile",
+      "action": "touch",
+      "file": "cat-juvenile-touch-sprite-v2.webp",
+      "base": "cat-juvenile-v2.png",
+      "reaction": "cat-juvenile-touch-frame-v1.png"
+    },
+    {
+      "species": "cat",
+      "stage": "juvenile",
+      "action": "clean",
+      "file": "cat-juvenile-clean-sprite-v2.webp",
+      "base": "cat-juvenile-v2.png",
+      "reaction": "cat-juvenile-clean-frame-v1.png"
+    },
+    {
+      "species": "cat",
+      "stage": "growth",
+      "action": "touch",
+      "file": "cat-growth-touch-sprite-v2.webp",
+      "base": "cat-growth-v1.png",
+      "reaction": "cat-growth-touch-frame-v1.png"
+    },
+    {
+      "species": "cat",
+      "stage": "growth",
+      "action": "clean",
+      "file": "cat-growth-clean-sprite-v2.webp",
+      "base": "cat-growth-v1.png",
+      "reaction": "cat-growth-clean-frame-v1.png"
+    },
+    {
+      "species": "dog",
+      "stage": "nursing",
+      "action": "touch",
+      "file": "dog-nursing-touch-sprite-v2.webp",
+      "base": "dog-nursing-v1.png",
+      "reaction": "dog-nursing-touch-frame-v1.png"
+    },
+    {
+      "species": "dog",
+      "stage": "nursing",
+      "action": "clean",
+      "file": "dog-nursing-clean-sprite-v2.webp",
+      "base": "dog-nursing-v1.png",
+      "reaction": "dog-nursing-clean-frame-v1.png"
+    },
+    {
+      "species": "dog",
+      "stage": "juvenile",
+      "action": "touch",
+      "file": "dog-juvenile-touch-sprite-v2.webp",
+      "base": "dog-juvenile-v1.png",
+      "reaction": "dog-juvenile-touch-frame-v1.png"
+    },
+    {
+      "species": "dog",
+      "stage": "juvenile",
+      "action": "clean",
+      "file": "dog-juvenile-clean-sprite-v2.webp",
+      "base": "dog-juvenile-v1.png",
+      "reaction": "dog-juvenile-clean-frame-v1.png"
+    },
+    {
+      "species": "dog",
+      "stage": "growth",
+      "action": "touch",
+      "file": "dog-growth-touch-sprite-v2.webp",
+      "base": "dog-growth-v1.png",
+      "reaction": "dog-growth-touch-frame-v1.png"
+    },
+    {
+      "species": "dog",
+      "stage": "growth",
+      "action": "clean",
+      "file": "dog-growth-clean-sprite-v2.webp",
+      "base": "dog-growth-v1.png",
+      "reaction": "dog-growth-clean-frame-v1.png"
+    },
+    {
+      "species": "rabbit",
+      "stage": "nursing",
+      "action": "touch",
+      "file": "rabbit-nursing-touch-sprite-v2.webp",
+      "base": "rabbit-nursing-v3.png",
+      "reaction": "rabbit-nursing-touch-frame-v1.png"
+    },
+    {
+      "species": "rabbit",
+      "stage": "nursing",
+      "action": "clean",
+      "file": "rabbit-nursing-clean-sprite-v2.webp",
+      "base": "rabbit-nursing-v3.png",
+      "reaction": "rabbit-nursing-clean-frame-v1.png"
+    },
+    {
+      "species": "rabbit",
+      "stage": "juvenile",
+      "action": "touch",
+      "file": "rabbit-juvenile-touch-sprite-v2.webp",
+      "base": "rabbit-juvenile-v3.png",
+      "reaction": "rabbit-juvenile-touch-frame-v1.png"
+    },
+    {
+      "species": "rabbit",
+      "stage": "juvenile",
+      "action": "clean",
+      "file": "rabbit-juvenile-clean-sprite-v2.webp",
+      "base": "rabbit-juvenile-v3.png",
+      "reaction": "rabbit-juvenile-clean-frame-v1.png"
+    },
+    {
+      "species": "rabbit",
+      "stage": "growth",
+      "action": "touch",
+      "file": "rabbit-growth-touch-sprite-v2.webp",
+      "base": "rabbit-growth-v3.png",
+      "reaction": "rabbit-growth-touch-frame-v1.png"
+    },
+    {
+      "species": "rabbit",
+      "stage": "growth",
+      "action": "clean",
+      "file": "rabbit-growth-clean-sprite-v2.webp",
+      "base": "rabbit-growth-v3.png",
+      "reaction": "rabbit-growth-clean-frame-v1.png"
+    }
+  ]
+}

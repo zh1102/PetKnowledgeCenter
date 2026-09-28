@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1448" height="1086" viewBox="0 0 1448 1086">
+  <!-- P22 分层导入测试稿：视觉由已确认母版保证；透明结构层仅用于验证 Penpot 的 SVG 层级导入。 -->
+  <g id="P22-阅读打卡-分层导入测试">
+    <g id="00-参考底图-最终需锁定">
+      <image id="P22-已确认母版" x="0" y="0" width="1448" height="1086" href="{{REFERENCE_PNG}}"/>
+    </g>
+
+    <!-- 使用极低不透明度而非 display:none，防止导入器丢弃测试结构。 -->
+    <g id="01-页面背景" opacity="0.001"><rect x="0" y="0" width="1448" height="1086" fill="#FFFBF3"/></g>
+    <g id="02-左侧导航" opacity="0.001">
+      <rect id="导航背景" x="0" y="0" width="256" height="1088" fill="#F0EBFF"/>
+      <rect id="Logo区域" x="24" y="28" width="205" height="88" fill="#855FE8"/>
+      <rect id="今日任务-选中" x="16" y="166" width="224" height="73" rx="18" fill="#855FE8"/>
+      <g id="导航菜单"><rect x="18" y="258" width="220" height="360" fill="#855FE8"/></g>
+      <g id="导航底部菜单"><rect x="18" y="692" width="220" height="126" fill="#855FE8"/></g>
+    </g>
+    <g id="03-页面标题区" opacity="0.001">
+      <rect id="标题图标" x="290" y="92" width="120" height="88" fill="#855FE8"/>
+      <rect id="页面标题" x="430" y="104" width="350" height="80" fill="#432B2B"/>
+      <rect id="页面说明" x="312" y="204" width="660" height="50" fill="#432B2B"/>
+      <rect id="用户信息" x="1250" y="18" width="170" height="68" fill="#855FE8"/>
+      <rect id="鼓励便签" x="1176" y="104" width="242" height="150" fill="#FFC64B"/>
+    </g>
+    <g id="04-主要内容" opacity="0.001">
+      <g id="任务信息卡"><rect x="278" y="264" width="580" height="724" rx="28" fill="#FFFFFF"/><rect id="阅读情境插画" x="300" y="360" width="530" height="300" fill="#855FE8"/><rect id="计时进度" x="350" y="680" width="440" height="112" fill="#855FE8"/><rect id="引导问题" x="310" y="812" width="520" height="145" fill="#855FE8"/></g>
+      <g id="完成记录卡"><rect x="875" y="264" width="545" height="724" rx="28" fill="#FFFFFF"/><rect id="书名输入框" x="910" y="418" width="480" height="72" fill="#855FE8"/><rect id="页码输入框" x="910" y="556" width="480" height="72" fill="#855FE8"/><rect id="免上传照片提示" x="910" y="650" width="480" height="92" fill="#855FE8"/><g id="操作按钮"><rect id="稍后继续" x="910" y="878" width="200" height="75" fill="#855FE8"/><rect id="提交阅读打卡" x="1125" y="878" width="265" height="75" fill="#855FE8"/></g></g>
+    </g>
+    <g id="05-状态与反馈-预留" opacity="0.001"><rect x="280" y="260" width="1140" height="730" fill="#FF6B78"/></g>
+    <g id="06-弹窗-预留" opacity="0.001"><rect x="430" y="320" width="600" height="400" rx="28" fill="#FFFFFF"/></g>
+  </g>
+</svg>

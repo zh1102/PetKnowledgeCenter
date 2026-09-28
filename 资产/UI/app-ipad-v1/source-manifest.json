@@ -1,0 +1,91 @@
+{
+  "source": "D:\\ZH\\宠物学堂\\资产\\UI\\child-today-ipad-landscape-simple-v4-official-pet.png",
+  "crops": {
+    "brand.png": [
+      22,
+      38,
+      207,
+      80
+    ],
+    "avatar.png": [
+      1260,
+      18,
+      62,
+      61
+    ],
+    "header-today.png": [
+      285,
+      85,
+      100,
+      111
+    ],
+    "goal.png": [
+      310,
+      304,
+      67,
+      66
+    ],
+    "companion.png": [
+      290,
+      438,
+      520,
+      317
+    ],
+    "gift.png": [
+      884,
+      810,
+      105,
+      114
+    ],
+    "note.png": [
+      1137,
+      97,
+      282,
+      158
+    ],
+    "nav-footer.png": [
+      0,
+      880,
+      255,
+      206
+    ],
+    "book.png": [
+      881,
+      297,
+      70,
+      61
+    ],
+    "english.png": [
+      881,
+      392,
+      69,
+      60
+    ],
+    "clipboard.png": [
+      881,
+      489,
+      68,
+      61
+    ],
+    "math.png": [
+      881,
+      584,
+      68,
+      65
+    ],
+    "question.png": [
+      881,
+      681,
+      68,
+      61
+    ],
+    "star.png": [
+      38,
+      690,
+      46,
+      47
+    ]
+  },
+  "version": "app-ipad-v1",
+  "operation": "lossless-extract"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "宠物学堂",
+  "appid": "",
+  "description": "宠物学堂 iPad 前端 mock 样板",
+  "versionName": "0.1.0",
+  "versionCode": "100",
+  "transformPx": false,
+  "vueVersion": "3",
+  "app-plus": { "usingComponents": true, "distribute": { "ios": {}, "android": {} } },
+  "h5": { "router": { "mode": "hash" }, "title": "宠物学堂 · 今日任务" },
+  "uniStatistics": { "enable": false }
+}

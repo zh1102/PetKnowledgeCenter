@@ -1,0 +1,20 @@
+{
+  "references": {
+    "today": "projects/7232553112017981524/screens/11317748825235247073",
+    "p22": "projects/7232553112017981524/screens/7747494290137752255"
+  },
+  "generated": {
+    "today": "projects/7232553112017981524/screens/598ed0c160a14867a9c01aef4368d5bf"
+  },
+  "projectId": "7232553112017981524",
+  "validation": {
+    "today": {
+      "name": "projects/7232553112017981524/screens/598ed0c160a14867a9c01aef4368d5bf",
+      "title": "宠物学堂 - 今天的任务 (可编辑重构)",
+      "deviceType": "DESKTOP",
+      "width": "2560",
+      "height": "2236",
+      "screenType": null
+    }
+  }
+}

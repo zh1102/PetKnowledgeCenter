@@ -1,0 +1,44 @@
+{
+  "source": "D:\\ZH\\宠物学堂\\资产\\UI\\child-p16-pet-detail-ipad-simple-v1-official-pet.png",
+  "cuts": {
+    "fullness": [
+      865,
+      248,
+      52,
+      52
+    ],
+    "clean": [
+      865,
+      309,
+      52,
+      52
+    ],
+    "happy": [
+      865,
+      370,
+      52,
+      52
+    ],
+    "energy": [
+      865,
+      430,
+      52,
+      52
+    ],
+    "knowledge": [
+      865,
+      490,
+      52,
+      52
+    ]
+  },
+  "bubble": {
+    "source": "D:\\ZH\\宠物学堂\\资产\\宠物\\pet-cleaning-sprite-v1.png",
+    "crop": [
+      125,
+      10,
+      130,
+      140
+    ]
+  }
+}

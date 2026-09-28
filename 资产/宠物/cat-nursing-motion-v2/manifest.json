@@ -1,0 +1,19 @@
+{
+  "source": "C:\\Users\\Administrator.DESKTOP-0ALURMI\\.codex\\generated_images\\01a0ad0f-c1dc-7593-973d-28d3016e319b\\exec-46f5ff11-839f-4b2e-9e80-fcefd85e2a51.png",
+  "tool": "built-in image_gen",
+  "order": [
+    0,
+    1,
+    2,
+    1,
+    0
+  ],
+  "delay": [
+    1500,
+    80,
+    120,
+    80,
+    300
+  ],
+  "version": "v2"
+}

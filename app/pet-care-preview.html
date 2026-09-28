@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>宠物照料动画预览</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#faf7ff;color:#301749;font:16px/1.5 system-ui,"Microsoft YaHei",sans-serif}main{max-width:1100px;margin:auto;padding:28px}h1{margin:0 0 8px;font-size:30px}.hint{color:#6e6081;margin:0 0 20px}.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:end;background:white;padding:18px;border:1px solid #e0d8f1;border-radius:18px}label{display:grid;gap:5px;font-weight:600}select,button{font:inherit;border-radius:10px;padding:10px 14px;min-height:44px}select{border:1px solid #bdb0d7;background:white;min-width:130px}button{border:0;background:#805ee5;color:white;cursor:pointer}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:20px}.card{background:white;border:1px solid #e0d8f1;border-radius:18px;padding:16px;text-align:center}.card h2{margin:0 0 8px;font-size:20px}.stage{height:360px;max-width:100%;aspect-ratio:1;margin:auto;position:relative;overflow:hidden}.still{display:block;position:absolute;width:100%;height:100%;object-fit:contain}.window{position:absolute;inset:0;overflow:hidden;display:none}.stage.playing .window{display:block}.stage.playing .still{visibility:hidden}.strip{display:block;width:1000%;height:100%;max-width:none;transform:translateX(0)}.note{font-size:14px;color:#6e6081}@media(max-width:700px){main{padding:16px}.cards{grid-template-columns:1fr}.stage{height:min(78vw,360px)}}
+  </style>
+</head>
+<body>
+<main>
+  <h1>宠物照料动画预览</h1>
+  <p class="hint">切换物种、阶段和动作，点击播放可并排比较上一版与修正版。每组为 10 帧，原素材保留。</p>
+  <div class="controls">
+    <label>宠物<select id="species"><option value="cat">小猫</option><option value="dog">小狗</option><option value="rabbit">兔子</option></select></label>
+    <label>阶段<select id="stage"><option value="nursing">哺育期</option><option value="juvenile">幼态期</option><option value="growth">成长期</option></select></label>
+    <label>动作<select id="action"><option value="touch">抚摸</option><option value="clean">清洁</option></select></label>
+    <button id="play" type="button">播放对比</button>
+  </div>
+  <div class="cards">
+    <section class="card"><h2>上一版 v3</h2><div class="stage"><img class="still" id="oldStill" alt="上一版宠物静态图" /><div class="window"><img class="strip" id="oldStrip" alt="上一版动作精灵图" /></div></div><p class="note">整只宠物切换反应图，可能出现位置变化</p></section>
+    <section class="card"><h2>修正版 v4</h2><div class="stage"><img class="still" id="newStill" alt="修正版宠物静态图" /><div class="window"><img class="strip" id="newStrip" alt="修正版动作精灵图" /></div></div><p class="note">身体固定，仅切换脸部表情并播放爱心或水滴</p></section>
+  </div>
+</main>
+<script>
+  const species = document.getElementById('species');
+  const stage = document.getElementById('stage');
+  const action = document.getElementById('action');
+  const strips = [document.getElementById('oldStrip'), document.getElementById('newStrip')];
+  const stages = [...document.querySelectorAll('.stage')];
+  let timer;
+  let frame = 0;
+  // 预览器只读取项目内已有资源；切换选项时停止旧计时器，避免多轮播放互相覆盖。
+  function refresh() {
+    clearInterval(timer);
+    frame = 0;
+    stages.forEach(item => item.classList.remove('playing'));
+    const s = species.value, t = stage.value, a = action.value;
+    const version = s === 'cat' ? (t === 'growth' ? 'v1' : 'v2') : s === 'dog' ? 'v1' : 'v3';
+    const still = `/static/pets/${s}-${t}-${version}.png`;
+    document.getElementById('oldStill').src = still;
+    document.getElementById('newStill').src = still;
+    strips.forEach((strip, index) => {
+      strip.src = `/static/pets/${s}-${t}-${a}-sprite-v${index + 3}.webp`;
+      strip.style.transform = 'translateX(0)';
+    });
+  }
+  // 与宠物中心相同的 90ms 帧间隔；十帧播完即停在原图，方便观察尺寸是否跳动。
+  function play() {
+    clearInterval(timer);
+    frame = 0;
+    strips.forEach(strip => strip.style.transform = 'translateX(0)');
+    // 精灵帧与静态图互斥显示；两种源图的抗锯齿边缘不再叠出双尾巴、双脚。
+    stages.forEach(item => item.classList.add('playing'));
+    timer = setInterval(() => {
+      frame += 1;
+      if (frame >= 10) { clearInterval(timer); stages.forEach(item => item.classList.remove('playing')); return; }
+      strips.forEach(strip => strip.style.transform = `translateX(-${frame * 10}%)`);
+    }, 90);
+  }
+  [species, stage, action].forEach(select => select.addEventListener('change', refresh));
+  document.getElementById('play').addEventListener('click', play);
+  refresh();
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "reference": "cat-nursing-v2.png",
+  "tool": "built-in image_gen",
+  "model": "tool default (image2.5 unavailable)",
+  "order": [
+    0,
+    1,
+    2,
+    1,
+    0
+  ],
+  "delay": [
+    2800,
+    90,
+    130,
+    90,
+    500
+  ],
+  "version": "v1"
+}
