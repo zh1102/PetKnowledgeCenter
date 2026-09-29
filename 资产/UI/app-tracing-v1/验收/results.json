@@ -1,0 +1,51 @@
+{
+  "multitouchStatus": "检测到多指或手掌触摸，本次不生成笔画。",
+  "zeroLengthStatus": "请写出一段清晰笔画，轻点不会计入。",
+  "statusAfterDraw": "第 1 笔已保存。这里不做书法质量评分。",
+  "restored": "已恢复上次的 1 笔草稿。",
+  "undoStatus": "已撤销上一笔，可以重做。",
+  "redoStatus": "已恢复上一笔。",
+  "clearStatus": "田字格已清空，可以重新描写。",
+  "metrics": [
+    {
+      "clientWidth": 1024,
+      "scrollWidth": 1024,
+      "undersized": 0,
+      "name": "empty",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "clientWidth": 1024,
+      "scrollWidth": 1024,
+      "undersized": 0,
+      "name": "drawn",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "clientWidth": 390,
+      "scrollWidth": 390,
+      "undersized": 0,
+      "name": "phone-portrait",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "clientWidth": 844,
+      "scrollWidth": 844,
+      "undersized": 0,
+      "name": "phone-landscape",
+      "width": 844,
+      "height": 390
+    },
+    {
+      "clientWidth": 768,
+      "scrollWidth": 768,
+      "undersized": 0,
+      "name": "ipad-portrait",
+      "width": 768,
+      "height": 1024
+    }
+  ]
+}

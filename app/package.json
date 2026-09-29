@@ -9,7 +9,7 @@
     "build": "uni build",
     "build:app": "uni build -p app",
     "typecheck": "vue-tsc --noEmit",
-    "test": "tsc -p tsconfig.test.json && node --test .test/tests/today.test.js .test/tests/pet.test.js",
+    "test": "tsc -p tsconfig.test.json && node --test .test/tests/today.test.js .test/tests/pet.test.js .test/tests/drawing.test.js",
     "check": "npm run typecheck && npm test && npm run build"
   },
   "dependencies": {

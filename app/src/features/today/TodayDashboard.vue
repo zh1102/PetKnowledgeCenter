@@ -36,6 +36,7 @@ const labels = { confirmed: '已完成', submitted: '待家长确认', pending: 
 
 // 页面白名单仅有已实现的首页与今日任务；其余入口明确告知未实现，不建立假导航。
 function navigate(destination: string) {
+  if (destination === 'chinese') { uni.redirectTo({ url: '/pages/tracing/index' }); return }
   // 已实现的宠物中心走真实路由，其余专区仍显示未实现提示。
   if (destination === 'growth') { uni.redirectTo({ url: '/pages/pet-center/index' }); return }
   if (destination === 'pet') { uni.redirectTo({ url: '/pages/pet/index' }); return }

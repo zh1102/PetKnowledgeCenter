@@ -30,6 +30,7 @@ const nextTask = computed(() => today.snapshot.tasks.find(task => task.status ==
 
 // 只跳转已实现页面；未实现专区明确提示，不用空页面掩盖当前交付范围。
 function navigate(destination: string) {
+  if (destination === 'chinese') { uni.redirectTo({ url: '/pages/tracing/index' }); return }
   if (today.busy) return
   if (destination === 'today') { uni.redirectTo({ url: '/pages/today/index' }); return }
   if (destination === 'growth') { uni.redirectTo({ url: '/pages/pet-center/index' }); return }

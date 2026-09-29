@@ -7,5 +7,5 @@
     "rootDir": ".",
     "types": ["node"]
   },
-  "include": ["src/features/today/model.ts", "tests/**/*.ts"]
+  "include": ["src/features/today/model.ts", "src/features/drawing/model.ts", "tests/**/*.ts"]
 }

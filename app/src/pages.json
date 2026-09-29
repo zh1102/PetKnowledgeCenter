@@ -4,7 +4,8 @@
     { "path": "pages/today/index", "style": { "navigationStyle": "custom", "navigationBarTitleText": "今日任务" } },
     { "path": "pages/adoption/index", "style": { "navigationStyle": "custom", "navigationBarTitleText": "领取你的伙伴" } },
     { "path": "pages/pet/index", "style": { "navigationStyle": "custom", "navigationBarTitleText": "伙伴档案" } },
-    { "path": "pages/pet-center/index", "style": { "navigationStyle": "custom", "navigationBarTitleText": "宠物中心" } }
+    { "path": "pages/pet-center/index", "style": { "navigationStyle": "custom", "navigationBarTitleText": "宠物中心" } },
+    { "path": "pages/tracing/index", "style": { "navigationStyle": "custom", "navigationBarTitleText": "生字描红样板" } }
   ],
   "globalStyle": { "backgroundColor": "#fffcf5", "navigationStyle": "custom" }
 }

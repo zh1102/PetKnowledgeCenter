@@ -54,6 +54,7 @@ function asset(species: Species, stage = 'nursing') {
   return `/static/pets/${species}-${stage}-${species === 'cat' && stage === 'growth' ? 'v1' : version}.png`
 }
 function navigate(destination: string) {
+  if (destination === 'chinese') { uni.redirectTo({ url: '/pages/tracing/index' }); return }
   if (today.busy) return
   if (!pets.pet) { notice.value = '先免费领取一位伙伴，再开始今天的学习吧。'; dialog.value = 'notice'; return }
   if (destination === 'home' || destination === 'today') uni.redirectTo({ url: destination === 'home' ? '/pages/index/index' : '/pages/today/index' })
