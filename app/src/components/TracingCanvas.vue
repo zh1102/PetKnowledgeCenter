@@ -64,7 +64,8 @@ export default defineComponent({
 // @ts-nocheck -- renderjs 由 uni-app 视图层编译，vue-tsc 不认识它的 this 与第二模块语义。
 export default {
   data() {
-    return { canvas: null, context: null, width: 0, height: 0, active: null, strokes: [] }
+    // renderedStrokes 与逻辑层 strokes 属性分名，防止 H5 合并上下文时覆盖父组件传入的笔画列表。
+    return { canvas: null, context: null, width: 0, height: 0, active: null, renderedStrokes: [] }
   },
   mounted() {
     setTimeout(() => this.setupCanvas(), 0)
@@ -89,7 +90,7 @@ export default {
       this.redraw()
     },
     restore(command) {
-      this.strokes = command && Array.isArray(command.strokes) ? command.strokes : []
+      this.renderedStrokes = command && Array.isArray(command.strokes) ? command.strokes : []
       // 每次命令变更都重新读取布局尺寸，避免旋转后沿用旧像素缓冲区产生位移。
       this.setupCanvas()
     },
@@ -118,7 +119,7 @@ export default {
       context.textBaseline = 'middle'
       context.fillText('永', this.width / 2, this.height / 2 + this.height * .035)
       context.restore()
-      this.strokes.forEach(stroke => this.drawNormalized(stroke.points, '#7250d8'))
+      this.renderedStrokes.forEach(stroke => this.drawNormalized(stroke.points, '#7250d8'))
     },
     drawNormalized(points, color) {
       if (!this.context || !Array.isArray(points) || points.length < 2) return
@@ -155,7 +156,16 @@ export default {
       if (!this.active || this.active.identifier !== identifier) return
       const completed = this.active
       this.active = null
-      this.$ownerInstance.callMethod('commitStroke', { points: completed.points, startedAt: completed.startedAt, endedAt: Date.now() })
+      const endedAt = Date.now()
+      const firstPoint = completed.points[0]
+      const lastPoint = completed.points[completed.points.length - 1]
+      const hasVisibleDistance = firstPoint && lastPoint && Math.hypot(lastPoint.x - firstPoint.x, lastPoint.y - firstPoint.y) >= .002
+      // 真机上逻辑层回传存在一帧以上延迟；先在视图层保留有效笔画，旋转或重绘时也不会闪退消失。
+      if (completed.points.length >= 2 && endedAt > completed.startedAt && hasVisibleDistance) {
+        this.renderedStrokes = [...this.renderedStrokes, { index: this.renderedStrokes.length, points: completed.points }]
+        this.redraw()
+      }
+      this.$ownerInstance.callMethod('commitStroke', { points: completed.points, startedAt: completed.startedAt, endedAt })
     },
     touchStart(event) {
       if (event.cancelable) event.preventDefault()
@@ -194,5 +204,7 @@ export default {
 <style scoped>
 .trace-surface{position:relative;width:min(100%,560px);aspect-ratio:1;margin:0 auto;border:3px solid #a98bea;border-radius:24px;overflow:hidden;background:#fffdf8;box-shadow:inset 0 0 0 8px #f4efff}
 .trace-canvas{display:block;width:100%;height:100%;touch-action:none;cursor:crosshair}
-@media(max-width:600px){.trace-surface{border-radius:18px;box-shadow:inset 0 0 0 5px #f4efff}}
+/* 手机同时受可用宽度和视口高度约束，避免短竖屏或横屏中田字格超出首屏。 */
+@media(max-width:600px){.trace-surface{width:min(100%,calc(100dvh - 280px));min-width:210px;border-radius:18px;box-shadow:inset 0 0 0 5px #f4efff}}
+@media(max-width:844px) and (orientation:landscape){.trace-surface{width:min(100%,calc(100dvh - 142px),320px);min-width:210px}}
 </style>

@@ -1,0 +1,104 @@
+[
+  {
+    "buttons": [
+      {
+        "center": 135,
+        "disabled": false,
+        "left": 93,
+        "text": "撤销",
+        "width": 84
+      },
+      {
+        "center": 227,
+        "disabled": true,
+        "left": 185,
+        "text": "重做",
+        "width": 84
+      },
+      {
+        "center": 319,
+        "disabled": false,
+        "left": 277,
+        "text": "清空",
+        "width": 84
+      }
+    ],
+    "clientWidth": 390,
+    "feedback": "第 1 笔已保存。这里不做书法质量评分。",
+    "scrollWidth": 390,
+    "strongPurple": 1965,
+    "surface": {
+      "height": 268,
+      "width": 268
+    },
+    "name": "portrait-after-draw"
+  },
+  {
+    "buttons": [
+      {
+        "center": 434.984375,
+        "disabled": false,
+        "left": 363.390625,
+        "text": "撤销",
+        "width": 143.1875
+      },
+      {
+        "center": 590.1796875,
+        "disabled": true,
+        "left": 518.578125,
+        "text": "重做",
+        "width": 143.203125
+      },
+      {
+        "center": 745.3828125,
+        "disabled": false,
+        "left": 673.78125,
+        "text": "清空",
+        "width": 143.203125
+      }
+    ],
+    "clientWidth": 844,
+    "feedback": "第 1 笔已保存。这里不做书法质量评分。",
+    "scrollWidth": 844,
+    "strongPurple": 1823,
+    "surface": {
+      "height": 248,
+      "width": 248
+    },
+    "name": "landscape-after-rotate"
+  },
+  {
+    "buttons": [
+      {
+        "center": 135,
+        "disabled": false,
+        "left": 93,
+        "text": "撤销",
+        "width": 84
+      },
+      {
+        "center": 227,
+        "disabled": true,
+        "left": 185,
+        "text": "重做",
+        "width": 84
+      },
+      {
+        "center": 319,
+        "disabled": false,
+        "left": 277,
+        "text": "清空",
+        "width": 84
+      }
+    ],
+    "clientWidth": 390,
+    "feedback": "第 1 笔已保存。这里不做书法质量评分。",
+    "scrollWidth": 390,
+    "strongPurple": 1965,
+    "surface": {
+      "height": 268,
+      "width": 268
+    },
+    "name": "portrait-after-rotate-back"
+  }
+]
