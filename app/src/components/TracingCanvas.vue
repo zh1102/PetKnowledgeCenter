@@ -72,14 +72,22 @@ export default {
   },
   methods: {
     setupCanvas() {
-      const canvas = this.$el.querySelector('canvas')
-      if (!canvas) return
-      const rect = canvas.getBoundingClientRect()
+      const canvasHost = this.$el.querySelector('.trace-canvas')
+      const canvas = canvasHost && canvasHost.querySelector('canvas')
+      if (!canvasHost || !canvas) return
+      // 逻辑尺寸始终读取不会被像素缓冲区撑大的 uni-canvas 宿主，避免刷新恢复时成倍放大。
+      const rect = canvasHost.getBoundingClientRect()
       if (!rect.width || !rect.height) return
       const scale = Math.min(window.devicePixelRatio || 1, 2)
-      canvas.width = Math.round(rect.width * scale)
-      canvas.height = Math.round(rect.height * scale)
+      const pixelWidth = Math.round(rect.width * scale)
+      const pixelHeight = Math.round(rect.height * scale)
+      // 明确锁定内部原生 canvas 的显示尺寸，使 width/height 只承担高清像素缓冲区职责。
+      canvas.style.width = `${rect.width}px`
+      canvas.style.height = `${rect.height}px`
+      if (canvas.width !== pixelWidth) canvas.width = pixelWidth
+      if (canvas.height !== pixelHeight) canvas.height = pixelHeight
       const context = canvas.getContext('2d')
+      // setTransform 覆盖旧缩放，重复初始化不会累积 devicePixelRatio。
       context.setTransform(scale, 0, 0, scale, 0, 0)
       context.lineCap = 'round'
       context.lineJoin = 'round'

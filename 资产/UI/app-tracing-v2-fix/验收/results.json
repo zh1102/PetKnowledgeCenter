@@ -23,6 +23,10 @@
         "width": 84
       }
     ],
+    "canvas": {
+      "height": 262,
+      "width": 262
+    },
     "clientWidth": 390,
     "feedback": "第 1 笔已保存。这里不做书法质量评分。",
     "scrollWidth": 390,
@@ -57,6 +61,10 @@
         "width": 143.203125
       }
     ],
+    "canvas": {
+      "height": 242,
+      "width": 242
+    },
     "clientWidth": 844,
     "feedback": "第 1 笔已保存。这里不做书法质量评分。",
     "scrollWidth": 844,
@@ -91,6 +99,10 @@
         "width": 84
       }
     ],
+    "canvas": {
+      "height": 262,
+      "width": 262
+    },
     "clientWidth": 390,
     "feedback": "第 1 笔已保存。这里不做书法质量评分。",
     "scrollWidth": 390,
@@ -100,5 +112,81 @@
       "width": 268
     },
     "name": "portrait-after-rotate-back"
+  },
+  {
+    "buttons": [
+      {
+        "center": 135,
+        "disabled": false,
+        "left": 93,
+        "text": "撤销",
+        "width": 84
+      },
+      {
+        "center": 227,
+        "disabled": true,
+        "left": 185,
+        "text": "重做",
+        "width": 84
+      },
+      {
+        "center": 319,
+        "disabled": false,
+        "left": 277,
+        "text": "清空",
+        "width": 84
+      }
+    ],
+    "canvas": {
+      "height": 262,
+      "width": 262
+    },
+    "clientWidth": 390,
+    "feedback": "已恢复上次的 1 笔草稿。",
+    "scrollWidth": 390,
+    "strongPurple": 1965,
+    "surface": {
+      "height": 268,
+      "width": 268
+    },
+    "name": "portrait-after-refresh-1"
+  },
+  {
+    "buttons": [
+      {
+        "center": 135,
+        "disabled": false,
+        "left": 93,
+        "text": "撤销",
+        "width": 84
+      },
+      {
+        "center": 227,
+        "disabled": true,
+        "left": 185,
+        "text": "重做",
+        "width": 84
+      },
+      {
+        "center": 319,
+        "disabled": false,
+        "left": 277,
+        "text": "清空",
+        "width": 84
+      }
+    ],
+    "canvas": {
+      "height": 262,
+      "width": 262
+    },
+    "clientWidth": 390,
+    "feedback": "已恢复上次的 1 笔草稿。",
+    "scrollWidth": 390,
+    "strongPurple": 1965,
+    "surface": {
+      "height": 268,
+      "width": 268
+    },
+    "name": "portrait-after-refresh-2"
   }
 ]

@@ -1,31 +1,37 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { onHide, onResize } from '@dcloudio/uni-app'
 import AppSidebar from '../../components/AppSidebar.vue'
 import TracingCanvas from '../../components/TracingCanvas.vue'
 import { appendStroke, createEmptyDraft, parseDraft, type TraceDraft, type TraceStroke } from '../../features/drawing/model'
 
 const STORAGE_KEY = 'phase03:trace-draft:hanzi-yong'
-const draft = ref<TraceDraft>(createEmptyDraft())
+let initialFeedback = '沿着淡紫色“永”字慢慢描写，一笔结束后才保存。'
+
+function loadInitialDraft(): TraceDraft {
+  // 在首屏挂载前同步恢复，避免空草稿命令与已恢复草稿命令在 renderjs 中发生竞争。
+  try {
+    const restored = parseDraft(uni.getStorageSync(STORAGE_KEY))
+    if (restored) {
+      initialFeedback = `已恢复上次的 ${restored.strokes.length} 笔草稿。`
+      return restored
+    }
+  } catch {
+    initialFeedback = '草稿读取失败，已使用空白田字格。'
+  }
+  return createEmptyDraft()
+}
+
+const draft = ref<TraceDraft>(loadInitialDraft())
 const redoStack = ref<TraceStroke[]>([])
 const layoutRevision = ref(0)
-const feedback = ref('沿着淡紫色“永”字慢慢描写，一笔结束后才保存。')
+const feedback = ref(initialFeedback)
 
 const progressLabel = computed(() => draft.value.strokes.length ? `已保存 ${draft.value.strokes.length} 笔` : '还没有保存笔画')
 
 function persistDraft() {
   // Phase 0.3 使用 uni storage 验证中断恢复；正式离线队列和 SQLite 在后续阶段实现。
   try { uni.setStorageSync(STORAGE_KEY, draft.value) } catch { feedback.value = '草稿暂时无法保存，请保持页面开启。' }
-}
-
-function restoreDraft() {
-  try {
-    const restored = parseDraft(uni.getStorageSync(STORAGE_KEY))
-    if (restored) {
-      draft.value = restored
-      feedback.value = `已恢复上次的 ${restored.strokes.length} 笔草稿。`
-    }
-  } catch { feedback.value = '草稿读取失败，已使用空白田字格。' }
 }
 
 function addStroke(stroke: TraceStroke) {
@@ -72,7 +78,6 @@ function navigate(destination: string) {
   feedback.value = '当前是 Phase 0.3 描红技术样板，其他学习模块尚未接入。'
 }
 
-onMounted(restoreDraft)
 onHide(persistDraft)
 // 页面尺寸改变后只递增版本号，由 renderjs 在视图层重建高清画布并按比例重画。
 onResize(() => { layoutRevision.value += 1 })
